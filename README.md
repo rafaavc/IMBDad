@@ -3,7 +3,7 @@
 
 [Relatório](https://docs.google.com/document/d/1V8rOgiysqNMPu2Ok7lEFIIz8MInvzcaOUimfKS9Nes8/edit?fbclid=IwAR15RgkxE3lQjEuv9sayKAzYb8tEuUy5iYwKVSXaIC-X5iVOk7oe8TN8J6E#heading=h.nirefwb1hxfi)
 
-## Entrega 1: done
+## Entrega 1: done (18)
 
 ## Entrega 2: in progress
 
