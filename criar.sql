@@ -54,6 +54,165 @@ create table Series (
     FOREIGN KEY(productionId) REFERENCES Production
 );
 
+/*started here*/
+drop table if exists Season;
+drop table if exists Episode;
+CREATE TABLE Season (
+  id INTEGER,
+  seriesId INTEGER,
+  yearStarted INTEGER,
+  yearFinished INTEGER,  
+  PRIMARY KEY(id,seriesId),
+  FOREIGN Key(seriesId) REFERENCES Series
+);
+CREATE TABLE Episode (
+    id INTEGER,
+    seasonId INTEGER,
+  	PRIMARY KEY(id,seasonId),
+    FOREIGN KEY(seasonId) REFERENCES Season
+);
+drop table if exists Actor;
+drop table if exists Role;
+drop table if exists SingleEpisodeActor;
+drop table if exists SingleEpisodeRole;
+
+CREATE TABLE Actor (
+  celebId INTEGER,
+  productionId INTEGER,
+  characterName Text NOT NULL,
+  characterRole Text NOT NULL,  
+  PRIMARY KEY(celebID,productionId),
+  FOREIGN Key(celebID) REFERENCES Celebrity,
+  FOREIGN KEY(productionId)REFERENCES Production
+);
+CREATE TABLE Role (
+  celebId INTEGER,
+  productionId INTEGER,
+  role Text NOT NULL,
+  PRIMARY KEY(celebID,productionId),
+  FOREIGN Key(celebID) REFERENCES Celebrity,
+  FOREIGN KEY(productionId)REFERENCES Production
+);
+CREATE TABLE SingleEpisodeActor (
+  celebId INTEGER,
+  productionId INTEGER,
+  characterName Text NOT NULL,
+  characterRole Text NOT NULL,  
+  PRIMARY KEY(celebID,productionId),
+  FOREIGN Key(celebID) REFERENCES Celebrity,
+  FOREIGN KEY(productionId)REFERENCES Production
+);
+CREATE TABLE SingleEpisodeRole (
+  celebId INTEGER,
+  productionId INTEGER,
+  role Text NOT NULL,
+  PRIMARY KEY(celebID,productionId),
+  FOREIGN Key(celebID) REFERENCES Celebrity,
+  FOREIGN KEY(productionId)REFERENCES Production
+);
+
+drop table if exists Review;
+drop table if exists ReviewEpisode;
+drop table if exists ReviewProduction;
+
+CREATE TABLE Review (
+  id INTEGER PRIMARY KEY,
+  mail TExT,
+  title Text NOT NULL,
+  text Text NOT NULL,
+  rating INteger NOT NULL,
+  FOREIGN Key(mail) REFERENCES User
+);
+CREATE TABLE ReviewEpisode (
+  reviewId INTEGEr,
+  productionId Integer,
+  title Text NOT NULL,
+  text Text NOT NULL,
+  rating INteger NOT NULL,
+  FOREIGN Key(reviewId) REFERENCES Review,
+  FOREIGN Key(productionId) REFERENCES Production,
+  PRIMARY key(reviewID, productionId)
+);
+CREATE TABLE ReviewProduction (
+  reviewId INTEGEr,
+  productionId Integer,
+  title Text NOT NULL,
+  text Text NOT NULL,
+  rating INteger NOT NULL,
+  PRIMARY key(reviewID, productionId),
+  FOREIGN Key(reviewId) REFERENCES Review,
+  FOREIGN Key(productionId) REFERENCES Production
+);
+
+drop table if exists List;
+drop table if exists BelongsToList;
+
+CREATE TABLE List(
+  id INteger PRIMARY key,
+  name TExt,
+  personId Integer,
+  private bool,
+  FOREIGN KEY(personId)REFERENCES Person
+);
+
+CREATE TABLE BelongsToList(
+  listId INteger ,
+  productionId Integer,
+  PRIMARY key(listId,productionId),
+  FOREIGN KEY(listId)REFERENCES List,
+  FOREIGN KEY(productionId)REFERENCES Production
+);
+
+Drop table if EXISTS Genre;
+Drop table if EXISTS BelongsToGenre;
+
+CREATE TABLE Genre(
+  name text PRIMARY KEY
+);
+
+CREATE TABLE BelongsToGenre(
+  productionId INteger,
+  name text,
+  PRIMARY KEY(productionId,name),
+  FOREIGN key (productionID) REFERENCES Production,
+  FOREIGN KEY (name) REFERENCES Genre
+);
+
+Drop table if EXISTS AwardType;
+Drop table if EXISTS AwardCategory;
+
+CREATE TABLE AwardType(
+  name text PRIMARY KEY
+);
+CREATE TABLE AwardCategory(
+  name text PRIMARY KEY
+);
+
+Drop table if EXISTS ProductionAward;
+Drop table if EXISTS CelebrityAward;
+
+CREATE TABLE ProductionAward(
+  productionId INteger,
+  awardTypeName text,
+  awardCategoryName text,
+  year integer,
+  PRIMARY KEY(productionId,awardTypeName,awardCategoryName),
+  FOREIGN key (productionID) REFERENCES Production,
+  FOREIGN KEY (awardCategoryName) REFERENCES AwardCategory,
+  FOREIGN KEY (awardTypeName) REFERENCES AwardType
+);
+
+CREATE TABLE CelebrityAward(
+  celebId text,
+  awardTypeName text,
+  awardCategoryName text,
+  year integer,
+  PRIMARY KEY(celebId,awardTypeName,awardCategoryName),
+  FOREIGN key (celebId) REFERENCES Celebrity,
+  FOREIGN KEY (awardCategoryName) REFERENCES AwardCategory,
+  FOREIGN KEY (awardTypeName) REFERENCES AwardType
+);
+
 /*
 PRODUCTION TESTS
 
