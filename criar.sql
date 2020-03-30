@@ -4,11 +4,28 @@ drop table if exists R1;
 ...
 create table R1 (....);
 ...*/
+/* These are being 'dropped' here because they reference tables below (and those tables wouldn't be able to be deleted if they were being referenced by another) */
+drop table if exists Role;
+drop table if exists Actor;
+drop table if exists SingleEpisodeActor;
+drop table if exists SingleEpisodeRole;
 
+drop table if exists ReviewEpisode;
+drop table if exists ReviewProduction;
+drop table if exists Review;
+
+drop table if exists BelongsToList;
+drop table if exists List;
+
+Drop table if EXISTS ProductionAward;
+Drop table if EXISTS CelebrityAward;
 
 drop table if exists Celebrity;
 drop table if exists User;
 drop table if exists Person; /* deleted after those to allow it to be deleted (because of foreign key)*/
+
+
+-- PERSON
 
 create table Person (
     id INTEGER PRIMARY KEY,
@@ -30,9 +47,14 @@ create table User (
     FOREIGN KEY(personId) REFERENCES Person
 );
 
+Drop table if EXISTS BelongsToGenre;
+Drop table if EXISTS Genre;
+
 drop table if exists Movie;
 drop table if exists Series;
 drop table if exists Production;
+
+-- PRODUCTION
 
 create table Production (
     id INTEGER PRIMARY KEY,
@@ -54,9 +76,9 @@ create table Series (
     FOREIGN KEY(productionId) REFERENCES Production
 );
 
-/*started here*/
-drop table if exists Season;
 drop table if exists Episode;
+drop table if exists Season;
+
 CREATE TABLE Season (
   id INTEGER,
   seriesId INTEGER,
@@ -75,10 +97,9 @@ CREATE TABLE Episode (
   	PRIMARY KEY(id,seasonId),
     FOREIGN KEY(seasonId) REFERENCES Season
 );
-drop table if exists Actor;
-drop table if exists Role;
-drop table if exists SingleEpisodeActor;
-drop table if exists SingleEpisodeRole;
+
+
+-- ACTOR & ROLE
 
 CREATE TABLE Actor (
   celebId INTEGER,
@@ -89,6 +110,7 @@ CREATE TABLE Actor (
   FOREIGN Key(celebID) REFERENCES Celebrity,
   FOREIGN KEY(productionId)REFERENCES Production
 );
+
 CREATE TABLE Role (
   celebId INTEGER,
   productionId INTEGER,
@@ -97,6 +119,8 @@ CREATE TABLE Role (
   FOREIGN Key(celebID) REFERENCES Celebrity,
   FOREIGN KEY(productionId)REFERENCES Production
 );
+
+
 CREATE TABLE SingleEpisodeActor (
   celebId INTEGER,
   productionId INTEGER,
@@ -115,9 +139,7 @@ CREATE TABLE SingleEpisodeRole (
   FOREIGN KEY(productionId)REFERENCES Production
 );
 
-drop table if exists Review;
-drop table if exists ReviewEpisode;
-drop table if exists ReviewProduction;
+-- REVIEW
 
 CREATE TABLE Review (
   id INTEGER PRIMARY KEY,
@@ -127,6 +149,7 @@ CREATE TABLE Review (
   rating INteger NOT NULL,
   FOREIGN Key(mail) REFERENCES User
 );
+
 CREATE TABLE ReviewEpisode (
   reviewId INTEGEr,
   productionId Integer,
@@ -134,6 +157,7 @@ CREATE TABLE ReviewEpisode (
   FOREIGN Key(productionId) REFERENCES Production,
   PRIMARY key(reviewID, productionId)
 );
+
 CREATE TABLE ReviewProduction (
   reviewId INTEGEr,
   productionId Integer,
@@ -142,8 +166,7 @@ CREATE TABLE ReviewProduction (
   FOREIGN Key(productionId) REFERENCES Production
 );
 
-drop table if exists List;
-drop table if exists BelongsToList;
+-- LIST
 
 CREATE TABLE List(
   id INteger PRIMARY key,
@@ -161,8 +184,7 @@ CREATE TABLE BelongsToList(
   FOREIGN KEY(productionId)REFERENCES Production
 );
 
-Drop table if EXISTS Genre;
-Drop table if EXISTS BelongsToGenre;
+-- GENRE
 
 CREATE TABLE Genre(
   id INTEGER PRIMARY KEY,
@@ -177,6 +199,8 @@ CREATE TABLE BelongsToGenre(
   FOREIGN KEY (genreId) REFERENCES Genre
 );
 
+-- AWARD
+
 Drop table if EXISTS AwardType;
 Drop table if EXISTS AwardCategory;
 
@@ -188,9 +212,6 @@ CREATE TABLE AwardCategory(
   id INTEGER PRIMARY KEY,
   name TEXT UNIQUE
 );
-
-Drop table if EXISTS ProductionAward;
-Drop table if EXISTS CelebrityAward;
 
 CREATE TABLE ProductionAward(
   productionId INTEGER,
