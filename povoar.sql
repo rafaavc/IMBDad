@@ -71,6 +71,7 @@ INSERT INTO AwardCategory VALUES(1, "Best Performance by an Actor in a Leading R
 INSERT INTO AwardCategory VALUES(2, "Best Performance by an Actor in a Motion Picture");
 
 INSERT INTO CelebrityAward VALUES(2, 1, 1, 2020, 1);
+INSERT INTO ProductionAward VALUES(3, 1, 1, 2020, 1);
 
 /*select * from Person;
 select * from Celebrity;
