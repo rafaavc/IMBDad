@@ -50,6 +50,8 @@ create table User (
 Drop table if EXISTS BelongsToGenre;
 Drop table if EXISTS Genre;
 
+drop table if exists Episode;
+drop table if exists Season;
 drop table if exists Movie;
 drop table if exists Series;
 drop table if exists Production;
@@ -76,13 +78,11 @@ create table Series (
     FOREIGN KEY(productionId) REFERENCES Production
 );
 
-drop table if exists Episode;
-drop table if exists Season;
 
 CREATE TABLE Season (
   id INTEGER,
-  seriesId INTEGER,
-  yearStarted INTEGER,
+  seriesId INTEGER NOT NULL,
+  yearStarted INTEGER NOT NULL,
   yearFinished INTEGER,  
   PRIMARY KEY(id),
   FOREIGN Key(seriesId) REFERENCES Series
@@ -90,7 +90,7 @@ CREATE TABLE Season (
 
 CREATE TABLE Episode (
     id INTEGER,
-    seasonId INTEGER,
+    seasonId INTEGER NOT NULL,
     name NOT NULL,
     sinopse TEXT, 
     duration INTEGER,
@@ -103,84 +103,82 @@ CREATE TABLE Episode (
 -- ACTOR & ROLE
 
 CREATE TABLE Actor (
-  celebId INTEGER,
-  productionId INTEGER,
+  celebId INTEGER NOT NULL,
+  productionId INTEGER NOT NULL,
   characterName Text NOT NULL,
   characterRole Text NOT NULL,  
   PRIMARY KEY(celebID,productionId),
-  FOREIGN Key(celebID) REFERENCES Celebrity,
+  FOREIGN KEY(celebID) REFERENCES Celebrity,
   FOREIGN KEY(productionId)REFERENCES Production
 );
 
 CREATE TABLE Role (
-  celebId INTEGER,
-  productionId INTEGER,
+  celebId INTEGER NOT NULL,
+  productionId INTEGER NOT NULL,
   role Text NOT NULL,
   PRIMARY KEY(celebID,productionId),
-  FOREIGN Key(celebID) REFERENCES Celebrity,
+  FOREIGN KEY(celebID) REFERENCES Celebrity,
   FOREIGN KEY(productionId)REFERENCES Production
 );
 
 
 CREATE TABLE SingleEpisodeActor (
-  celebId INTEGER,
-  productionId INTEGER,
+  celebId INTEGER NOT NULL,
+  episodeId INTEGER NOT NULL,
   characterName Text NOT NULL,
   characterRole Text NOT NULL,  
-  PRIMARY KEY(celebID,productionId),
-  FOREIGN Key(celebID) REFERENCES Celebrity,
-  FOREIGN KEY(productionId)REFERENCES Production
+  PRIMARY KEY(celebID,episodeId),
+  FOREIGN KEY(celebID) REFERENCES Celebrity,
+  FOREIGN KEY(episodeId)REFERENCES Production
 );
 CREATE TABLE SingleEpisodeRole (
-  celebId INTEGER,
-  productionId INTEGER,
+  celebId INTEGER NOT NULL,
+  episodeId INTEGER NOT NULL,
   role Text NOT NULL,
-  PRIMARY KEY(celebID,productionId),
-  FOREIGN Key(celebID) REFERENCES Celebrity,
-  FOREIGN KEY(productionId)REFERENCES Production
+  PRIMARY KEY(celebID,episodeId),
+  FOREIGN KEY(celebID) REFERENCES Celebrity,
+  FOREIGN KEY(episodeId)REFERENCES Production
 );
 
 -- REVIEW
 
 CREATE TABLE Review (
   id INTEGER PRIMARY KEY,
-  mail TExT,
-  title Text NOT NULL,
-  text Text NOT NULL,
-  rating INteger NOT NULL,
-  FOREIGN Key(mail) REFERENCES User
+  userId INTEGER NOT NULL,
+  title TEXT,
+  text TEXT,
+  rating INTEGER NOT NULL CHECK(rating > 0 AND rating <= 10),
+  FOREIGN KEY(userId) REFERENCES User
 );
 
 CREATE TABLE ReviewEpisode (
-  reviewId INTEGEr,
-  productionId Integer,
-  FOREIGN Key(reviewId) REFERENCES Review,
-  FOREIGN Key(productionId) REFERENCES Production,
-  PRIMARY key(reviewID, productionId)
+  reviewId INTEGER PRIMARY KEY,
+  productionId INTEGER NOT NULL,
+  FOREIGN KEY(reviewId) REFERENCES Review,
+  FOREIGN KEY(productionId) REFERENCES Production
 );
 
 CREATE TABLE ReviewProduction (
-  reviewId INTEGEr,
-  productionId Integer,
-  PRIMARY key(reviewID, productionId),
-  FOREIGN Key(reviewId) REFERENCES Review,
-  FOREIGN Key(productionId) REFERENCES Production
+  reviewId INTEGER PRIMARY KEY,
+  productionId INTEGER NOT NULL,
+  FOREIGN KEY(reviewId) REFERENCES Review,
+  FOREIGN KEY(productionId) REFERENCES Production
 );
 
 -- LIST
 
 CREATE TABLE List(
-  id INteger PRIMARY key,
-  name TExt,
-  personId Integer,
-  private bool,
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  personId INTEGER NOT NULL,
+  private BOOLEAN NOT NULL,
   FOREIGN KEY(personId)REFERENCES Person
 );
 
 CREATE TABLE BelongsToList(
-  listId INteger ,
-  productionId Integer,
-  PRIMARY key(listId,productionId),
+  listId INTEGER NOT NULL,
+  productionId INTEGER NOT NULL,
+  PRIMARY KEY(listId,productionId),
   FOREIGN KEY(listId)REFERENCES List,
   FOREIGN KEY(productionId)REFERENCES Production
 );
@@ -193,10 +191,10 @@ CREATE TABLE Genre(
 );
 
 CREATE TABLE BelongsToGenre(
-  productionId INteger,
-  genreId INTEGER,
+  productionId INTEGER NOT NULL,
+  genreId INTEGER NOT NULL,
   PRIMARY KEY(productionId,genreId),
-  FOREIGN key (productionID) REFERENCES Production,
+  FOREIGN KEY (productionID) REFERENCES Production,
   FOREIGN KEY (genreId) REFERENCES Genre
 );
 
@@ -215,10 +213,11 @@ CREATE TABLE AwardCategory(
 );
 
 CREATE TABLE ProductionAward(
-  productionId INTEGER,
-  awardTypeId TEXT,
-  awardCategoryId TEXT,
-  year INTEGER,
+  productionId INTEGER NOT NULL,
+  awardTypeId TEXT NOT NULL,
+  awardCategoryId TEXT NOT NULL,
+  year INTEGER NOT NULL,
+  won BOOLEAN NOT NULL, -- if false was only a nominee, true actually won
   PRIMARY KEY(productionId,awardTypeId,awardCategoryId),
   FOREIGN key (productionID) REFERENCES Production,
   FOREIGN KEY (awardCategoryId) REFERENCES AwardCategory,
@@ -226,10 +225,11 @@ CREATE TABLE ProductionAward(
 );
 
 CREATE TABLE CelebrityAward(
-  celebId TEXT,
-  awardTypeId TEXT,
-  awardCategoryId TEXT,
-  year INTEGER,
+  celebId TEXT NOT NULL,
+  awardTypeId TEXT NOT NULL,
+  awardCategoryId TEXT NOT NULL,
+  year INTEGER NOT NULL,
+  won BOOLEAN NOT NULL, -- if false was only a nominee, true actually won
   PRIMARY KEY(celebId,awardTypeId,awardCategoryId),
   FOREIGN key (celebId) REFERENCES Celebrity,
   FOREIGN KEY (awardCategoryId) REFERENCES AwardCategory,
