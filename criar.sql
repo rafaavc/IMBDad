@@ -165,49 +165,52 @@ Drop table if EXISTS Genre;
 Drop table if EXISTS BelongsToGenre;
 
 CREATE TABLE Genre(
-  name text PRIMARY KEY
+  id INTEGER PRIMARY KEY,
+  name TEXT UNIQUE
 );
 
 CREATE TABLE BelongsToGenre(
   productionId INteger,
-  name text,
-  PRIMARY KEY(productionId,name),
+  genreId INTEGER,
+  PRIMARY KEY(productionId,genreId),
   FOREIGN key (productionID) REFERENCES Production,
-  FOREIGN KEY (name) REFERENCES Genre
+  FOREIGN KEY (genreId) REFERENCES Genre
 );
 
 Drop table if EXISTS AwardType;
 Drop table if EXISTS AwardCategory;
 
 CREATE TABLE AwardType(
-  name text PRIMARY KEY
+  id INTEGER PRIMARY KEY,
+  name TEXT UNIQUE
 );
 CREATE TABLE AwardCategory(
-  name text PRIMARY KEY
+  id INTEGER PRIMARY KEY,
+  name TEXT UNIQUE
 );
 
 Drop table if EXISTS ProductionAward;
 Drop table if EXISTS CelebrityAward;
 
 CREATE TABLE ProductionAward(
-  productionId INteger,
-  awardTypeName text,
-  awardCategoryName text,
-  year integer,
-  PRIMARY KEY(productionId,awardTypeName,awardCategoryName),
+  productionId INTEGER,
+  awardTypeId TEXT,
+  awardCategoryId TEXT,
+  year INTEGER,
+  PRIMARY KEY(productionId,awardTypeId,awardCategoryId),
   FOREIGN key (productionID) REFERENCES Production,
-  FOREIGN KEY (awardCategoryName) REFERENCES AwardCategory,
-  FOREIGN KEY (awardTypeName) REFERENCES AwardType
+  FOREIGN KEY (awardCategoryId) REFERENCES AwardCategory,
+  FOREIGN KEY (awardTypeId) REFERENCES AwardType
 );
 
 CREATE TABLE CelebrityAward(
-  celebId text,
-  awardTypeName text,
-  awardCategoryName text,
-  year integer,
-  PRIMARY KEY(celebId,awardTypeName,awardCategoryName),
+  celebId TEXT,
+  awardTypeId TEXT,
+  awardCategoryId TEXT,
+  year INTEGER,
+  PRIMARY KEY(celebId,awardTypeId,awardCategoryId),
   FOREIGN key (celebId) REFERENCES Celebrity,
-  FOREIGN KEY (awardCategoryName) REFERENCES AwardCategory,
-  FOREIGN KEY (awardTypeName) REFERENCES AwardType
+  FOREIGN KEY (awardCategoryId) REFERENCES AwardCategory,
+  FOREIGN KEY (awardTypeId) REFERENCES AwardType
 );
 
