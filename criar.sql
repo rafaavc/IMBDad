@@ -84,9 +84,10 @@ CREATE TABLE Season (
   seriesId INTEGER,
   yearStarted INTEGER,
   yearFinished INTEGER,  
-  PRIMARY KEY(id,seriesId),
+  PRIMARY KEY(id),
   FOREIGN Key(seriesId) REFERENCES Series
 );
+
 CREATE TABLE Episode (
     id INTEGER,
     seasonId INTEGER,
@@ -94,7 +95,7 @@ CREATE TABLE Episode (
     sinopse TEXT, 
     duration INTEGER,
     airingDate DATE,
-  	PRIMARY KEY(id,seasonId),
+  	PRIMARY KEY(id),
     FOREIGN KEY(seasonId) REFERENCES Season
 );
 
