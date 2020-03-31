@@ -109,9 +109,9 @@ CREATE TABLE Role (
 );
 
 CREATE TABLE ProductionRole (
-  productionId INTEGER REFERENCES Production(id),
-  celebId INTEGER REFERENCES Celebrity(personId),
-  roleId INTEGER REFERENCES Role(id),
+  productionId INTEGER NOT NULL REFERENCES Production(id),
+  celebId INTEGER NOT NULL REFERENCES Celebrity(personId),
+  roleId INTEGER NOT NULL REFERENCES Role(id),
   characterName TEXT,
   PRIMARY KEY (productionId, celebId, roleId)/*
   FOREIGN KEY (productionId) REFERENCES Production,
