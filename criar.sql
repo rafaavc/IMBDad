@@ -6,9 +6,8 @@ create table R1 (....);
 ...*/
 /* These are being 'dropped' here because they reference tables below (and those tables wouldn't be able to be deleted if they were being referenced by another) */
 drop table if exists Role;
-drop table if exists Actor;
-drop table if exists SingleEpisodeActor;
-drop table if exists SingleEpisodeRole;
+drop table if exists ProductionRole;
+drop table if exists EpisodeRole;
 
 drop table if exists ReviewEpisode;
 drop table if exists ReviewProduction;
@@ -17,8 +16,10 @@ drop table if exists Review;
 drop table if exists BelongsToList;
 drop table if exists List;
 
-Drop table if EXISTS ProductionAward;
-Drop table if EXISTS CelebrityAward;
+Drop table if EXISTS Award;
+drop table if exists NomineeProduction;
+drop table if exists NomineeCelebrity;
+
 
 drop table if exists Celebrity;
 drop table if exists User;
@@ -100,44 +101,33 @@ CREATE TABLE Episode (
 );
 
 
--- ACTOR & ROLE
-
-CREATE TABLE Actor (
-  celebId INTEGER NOT NULL,
-  productionId INTEGER NOT NULL,
-  characterName Text NOT NULL,
-  characterRole Text NOT NULL,  
-  PRIMARY KEY(celebID,productionId),
-  FOREIGN KEY(celebID) REFERENCES Celebrity,
-  FOREIGN KEY(productionId)REFERENCES Production
-);
+-- ROLE
 
 CREATE TABLE Role (
-  celebId INTEGER NOT NULL,
-  productionId INTEGER NOT NULL,
-  role Text NOT NULL,
-  PRIMARY KEY(celebID,productionId),
-  FOREIGN KEY(celebID) REFERENCES Celebrity,
-  FOREIGN KEY(productionId)REFERENCES Production
+  id INTEGER PRIMARY KEY,
+  name text UNIQUE
 );
 
-
-CREATE TABLE SingleEpisodeActor (
-  celebId INTEGER NOT NULL,
-  episodeId INTEGER NOT NULL,
-  characterName Text NOT NULL,
-  characterRole Text NOT NULL,  
-  PRIMARY KEY(celebID,episodeId),
-  FOREIGN KEY(celebID) REFERENCES Celebrity,
-  FOREIGN KEY(episodeId)REFERENCES Production
+CREATE TABLE ProductionRole (
+  productionId INTEGER REFERENCES Production(id),
+  celebId INTEGER REFERENCES Celebrity(personId),
+  roleId INTEGER REFERENCES Role(id),
+  characterName TEXT,
+  PRIMARY KEY (productionId, celebId, roleId)/*
+  FOREIGN KEY (productionId) REFERENCES Production,
+  FOREIGN KEY (celebId) REFERENCES Celebrity,
+  FOREIGN KEY (roleId) REFERENCES Role*/
 );
-CREATE TABLE SingleEpisodeRole (
-  celebId INTEGER NOT NULL,
+
+CREATE TABLE EpisodeRole (
   episodeId INTEGER NOT NULL,
-  role Text NOT NULL,
-  PRIMARY KEY(celebID,episodeId),
-  FOREIGN KEY(celebID) REFERENCES Celebrity,
-  FOREIGN KEY(episodeId)REFERENCES Production
+  celebId INTEGER NOT NULL,
+  roleId INTEGER NOT NULL,
+  characterName TEXT,
+  PRIMARY KEY (episodeId, celebId, roleId),
+  FOREIGN KEY (episodeId) REFERENCES Episode,
+  FOREIGN KEY (celebId) REFERENCES Celebrity,
+  FOREIGN KEY (roleId) REFERENCES Role
 );
 
 -- REVIEW
@@ -212,27 +202,32 @@ CREATE TABLE AwardCategory(
   name TEXT UNIQUE
 );
 
-CREATE TABLE ProductionAward(
+CREATE TABLE Award (
+  id INTEGER PRIMARY KEY,
+  year INT NOT NULL,
   productionId INTEGER NOT NULL,
-  awardTypeId TEXT NOT NULL,
-  awardCategoryId TEXT NOT NULL,
-  year INTEGER NOT NULL,
-  won BOOLEAN NOT NULL, -- if false was only a nominee, true actually won
-  PRIMARY KEY(productionId,awardTypeId,awardCategoryId),
-  FOREIGN key (productionID) REFERENCES Production,
+  awardTypeId INTEGER NOT NULL,
+  awardCategoryId INTEGER NOT NULL,
+  celebId INTEGER NOT NULL,
+  FOREIGN KEY (productionId) REFERENCES Production,
+  FOREIGN KEY (awardTypeId) REFERENCES AwardType,
   FOREIGN KEY (awardCategoryId) REFERENCES AwardCategory,
-  FOREIGN KEY (awardTypeId) REFERENCES AwardType
+  FOREIGN KEY (celebId) REFERENCES Celebrity
 );
 
-CREATE TABLE CelebrityAward(
-  celebId TEXT NOT NULL,
-  awardTypeId TEXT NOT NULL,
-  awardCategoryId TEXT NOT NULL,
-  year INTEGER NOT NULL,
-  won BOOLEAN NOT NULL, -- if false was only a nominee, true actually won
-  PRIMARY KEY(celebId,awardTypeId,awardCategoryId),
-  FOREIGN key (celebId) REFERENCES Celebrity,
-  FOREIGN KEY (awardCategoryId) REFERENCES AwardCategory,
-  FOREIGN KEY (awardTypeId) REFERENCES AwardType
+CREATE TABLE NomineeProduction (
+  awardId INTEGER NOT NULL,
+  productionId INTEGER NOT NULL,
+  PRIMARY KEY (awardId, productionId),
+  FOREIGN KEY (awardId) REFERENCES Award,
+  FOREIGN KEY (productionId) REFERENCES Production
+);
+
+CREATE TABLE NomineeCelebrity (
+  awardId INTEGER NOT NULL,
+  celebId INTEGER NOT NULL,
+  PRIMARY KEY (awardId, celebId),
+  FOREIGN KEY (awardId) REFERENCES Award,
+  FOREIGN KEY (celebId) REFERENCES Celebrity
 );
 
