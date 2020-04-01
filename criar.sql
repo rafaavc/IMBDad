@@ -44,6 +44,7 @@ create table Celebrity (
 create table User (
     personId INTEGER PRIMARY KEY,
     mail TEXT UNIQUE,
+    profilePicture TEXT, -- link to the picture
     password NOT NULL CHECK(length(password) > 5),
     FOREIGN KEY(personId) REFERENCES Person
 );
@@ -64,7 +65,7 @@ create table Production (
     name TEXT NOT NULL,
     year INTEGER NOT NULL,
     sinopse TEXT,
-    trailer BLOB
+    trailer TEXT -- link to the video
 );
 
 create table Movie (

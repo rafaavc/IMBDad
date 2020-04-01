@@ -34,8 +34,8 @@ INSERT INTO Celebrity VALUES(3, 1.83, "Todd Phillips was born on December 20, 19
 INSERT INTO Celebrity VALUES(4, NULL, "Bronson Webb was born on February 20, 1983 in London, England as Bronson John Webb. He is an actor, known for RocknRolla: A Quadrilha (2008), Reino dos Céus (2005) and Expiação (2007).");
 INSERT INTO Celebrity VALUES(6, 1.85, "Heath Ledger was born on the fourth of April 1979, in Perth, Western Australia, to Sally and Kim Ledger.");
 INSERT INTO Celebrity VALUES(7, 1.83, NULL);
-INSERT INTO User VALUES(1, "up201806680@fe.up.pt", "verysecret");
-INSERT INTO User VALUES(5, "up201806134@fe.up.pt", "password");
+INSERT INTO User VALUES(1, "up201806680@fe.up.pt", "http://link.to.photo", "verysecret");
+INSERT INTO User VALUES(5, "up201806134@fe.up.pt", "http://link.to.photo", "password");
 
 -- ROLE
 
