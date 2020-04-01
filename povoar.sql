@@ -52,7 +52,9 @@ INSERT INTO ProductionRole VALUES(5, 7, 2, NULL);
 -- REVIEW
 
 INSERT INTO Review VALUES(1, 1, NULL, NULL, 9);
+INSERT INTO Review VALUES(2, 5, "A very thrilling episode!", NULL, 10);
 INSERT INTO ReviewProduction VALUES(1, 3);
+INSERT INTO ReviewEpisode VALUES(2, 1);
 
 -- LIST
 

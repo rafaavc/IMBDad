@@ -4,7 +4,6 @@ drop table if exists R1;
 ...
 create table R1 (....);
 ...*/
-/* These are being 'dropped' here because they reference tables below (and those tables wouldn't be able to be deleted if they were being referenced by another) */
 
 drop table if exists ProductionRole;
 drop table if exists EpisodeRole;
@@ -24,7 +23,7 @@ drop table if exists NomineeCelebrity;
 
 drop table if exists Celebrity;
 drop table if exists User;
-drop table if exists Person; /* deleted after those to allow it to be deleted (because of foreign key)*/
+drop table if exists Person; 
 
 
 -- PERSON
@@ -130,7 +129,7 @@ CREATE TABLE Review (
 
 CREATE TABLE ReviewEpisode (
   reviewId INTEGER PRIMARY KEY REFERENCES Review ON DELETE CASCADE ON UPDATE CASCADE,
-  productionId INTEGER NOT NULL REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE
+  episodeId INTEGER NOT NULL REFERENCES Episode ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE ReviewProduction (
