@@ -100,6 +100,7 @@ INSERT INTO Award VALUES(2, 2020, 4, 1, 3, 6);
 INSERT INTO NomineeCelebrity VALUES(2, 6);
 INSERT INTO NomineeProduction VALUES(2, 4);
 
+
 /*select * from Person;
 select * from Celebrity;
 select * from User;
