@@ -94,7 +94,11 @@ INSERT INTO AwardCategory VALUES(2, "Best Performance by an Actor in a Motion Pi
 INSERT INTO AwardCategory VALUES(4, "Best Motion Picture of the Year");
 
 INSERT INTO Award VALUES(1, 2020, 3, 1, 1, 2);
+INSERT INTO NomineeProduction VALUES(1, 3);
+INSERT INTO NomineeCelebrity VALUES(1,2);
 INSERT INTO Award VALUES(2, 2020, 4, 1, 3, 6);
+INSERT INTO NomineeCelebrity VALUES(2, 6);
+INSERT INTO NomineeProduction VALUES(2, 4);
 
 /*select * from Person;
 select * from Celebrity;

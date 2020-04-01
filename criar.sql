@@ -5,9 +5,10 @@ drop table if exists R1;
 create table R1 (....);
 ...*/
 /* These are being 'dropped' here because they reference tables below (and those tables wouldn't be able to be deleted if they were being referenced by another) */
-drop table if exists Role;
+
 drop table if exists ProductionRole;
 drop table if exists EpisodeRole;
+drop table if exists Role;
 
 drop table if exists ReviewEpisode;
 drop table if exists ReviewProduction;
@@ -35,18 +36,16 @@ create table Person (
 );
 
 create table Celebrity (
-    personId INTEGER PRIMARY KEY,
+    personId INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE,
     height REAL,
-    bio TEXT,
-    FOREIGN KEY(personId) REFERENCES Person
+    bio TEXT
 );
 
 create table User (
-    personId INTEGER PRIMARY KEY,
+    personId INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE,
     mail TEXT UNIQUE,
     profilePicture TEXT, -- link to the picture
-    password NOT NULL CHECK(length(password) > 5),
-    FOREIGN KEY(personId) REFERENCES Person
+    password NOT NULL CHECK(length(password) > 5)
 );
 
 Drop table if EXISTS BelongsToGenre;
@@ -69,36 +68,30 @@ create table Production (
 );
 
 create table Movie (
-    productionId PRIMARY KEY,
-    duration TIME,
-    FOREIGN KEY(productionId) REFERENCES Production
+    productionId PRIMARY KEY REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE,
+    duration TIME
 );
 
 create table Series (
-    productionId PRIMARY KEY,
-    endingYear INTEGER,
-    FOREIGN KEY(productionId) REFERENCES Production
+    productionId PRIMARY KEY REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE,
+    endingYear INTEGER
 );
 
 
 CREATE TABLE Season (
-  id INTEGER,
-  seriesId INTEGER NOT NULL,
+  id INTEGER PRIMARY KEY,
+  seriesId INTEGER NOT NULL REFERENCES Series ON DELETE CASCADE ON UPDATE CASCADE,
   yearStarted INTEGER NOT NULL,
-  yearFinished INTEGER,  
-  PRIMARY KEY(id),
-  FOREIGN Key(seriesId) REFERENCES Series
+  yearFinished INTEGER
 );
 
 CREATE TABLE Episode (
-    id INTEGER,
-    seasonId INTEGER NOT NULL,
+    id INTEGER PRIMARY KEY,
+    seasonId INTEGER NOT NULL REFERENCES Season ON DELETE CASCADE ON UPDATE CASCADE,
     name NOT NULL,
     sinopse TEXT, 
     duration INTEGER,
-    airingDate DATE,
-  	PRIMARY KEY(id),
-    FOREIGN KEY(seasonId) REFERENCES Season
+    airingDate DATE
 );
 
 
@@ -110,50 +103,39 @@ CREATE TABLE Role (
 );
 
 CREATE TABLE ProductionRole (
-  productionId INTEGER NOT NULL REFERENCES Production(id),
-  celebId INTEGER NOT NULL REFERENCES Celebrity(personId),
-  roleId INTEGER NOT NULL REFERENCES Role(id),
+  productionId INTEGER NOT NULL REFERENCES Production(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  celebId INTEGER NOT NULL REFERENCES Celebrity(personId) ON DELETE CASCADE ON UPDATE CASCADE,
+  roleId INTEGER NOT NULL REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
   characterName TEXT,
-  PRIMARY KEY (productionId, celebId, roleId)/*
-  FOREIGN KEY (productionId) REFERENCES Production,
-  FOREIGN KEY (celebId) REFERENCES Celebrity,
-  FOREIGN KEY (roleId) REFERENCES Role*/
+  PRIMARY KEY (productionId, celebId, roleId)
 );
 
 CREATE TABLE EpisodeRole (
-  episodeId INTEGER NOT NULL,
-  celebId INTEGER NOT NULL,
-  roleId INTEGER NOT NULL,
+  episodeId INTEGER NOT NULL REFERENCES Episode ON DELETE CASCADE ON UPDATE CASCADE,
+  celebId INTEGER NOT NULL REFERENCES Celebrity ON DELETE CASCADE ON UPDATE CASCADE,
+  roleId INTEGER NOT NULL REFERENCES Role ON DELETE CASCADE ON UPDATE CASCADE,
   characterName TEXT,
-  PRIMARY KEY (episodeId, celebId, roleId),
-  FOREIGN KEY (episodeId) REFERENCES Episode,
-  FOREIGN KEY (celebId) REFERENCES Celebrity,
-  FOREIGN KEY (roleId) REFERENCES Role
+  PRIMARY KEY (episodeId, celebId, roleId)
 );
 
 -- REVIEW
 
 CREATE TABLE Review (
   id INTEGER PRIMARY KEY,
-  userId INTEGER NOT NULL,
+  userId INTEGER REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
   title TEXT,
   text TEXT,
-  rating INTEGER NOT NULL CHECK(rating > 0 AND rating <= 10),
-  FOREIGN KEY(userId) REFERENCES User
+  rating INTEGER NOT NULL CHECK(rating > 0 AND rating <= 10)
 );
 
 CREATE TABLE ReviewEpisode (
-  reviewId INTEGER PRIMARY KEY,
-  productionId INTEGER NOT NULL,
-  FOREIGN KEY(reviewId) REFERENCES Review,
-  FOREIGN KEY(productionId) REFERENCES Production
+  reviewId INTEGER PRIMARY KEY REFERENCES Review ON DELETE CASCADE ON UPDATE CASCADE,
+  productionId INTEGER NOT NULL REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE ReviewProduction (
-  reviewId INTEGER PRIMARY KEY,
-  productionId INTEGER NOT NULL,
-  FOREIGN KEY(reviewId) REFERENCES Review,
-  FOREIGN KEY(productionId) REFERENCES Production
+  reviewId INTEGER PRIMARY KEY REFERENCES Review ON DELETE CASCADE ON UPDATE CASCADE,
+  productionId INTEGER NOT NULL REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- LIST
@@ -161,17 +143,14 @@ CREATE TABLE ReviewProduction (
 CREATE TABLE List(
   id INTEGER PRIMARY KEY,
   name TEXT NOT NULL,
-  personId INTEGER NOT NULL,
-  private BOOLEAN NOT NULL,
-  FOREIGN KEY(personId)REFERENCES Person
+  personId INTEGER REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE,
+  private BOOLEAN NOT NULL
 );
 
 CREATE TABLE BelongsToList(
-  listId INTEGER NOT NULL,
-  productionId INTEGER NOT NULL,
-  PRIMARY KEY(listId,productionId),
-  FOREIGN KEY(listId)REFERENCES List,
-  FOREIGN KEY(productionId)REFERENCES Production
+  listId INTEGER NOT NULL REFERENCES List ON DELETE CASCADE ON UPDATE CASCADE,
+  productionId INTEGER NOT NULL REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY(listId,productionId)
 );
 
 -- GENRE
@@ -182,11 +161,9 @@ CREATE TABLE Genre(
 );
 
 CREATE TABLE BelongsToGenre(
-  productionId INTEGER NOT NULL,
-  genreId INTEGER NOT NULL,
-  PRIMARY KEY(productionId,genreId),
-  FOREIGN KEY (productionID) REFERENCES Production,
-  FOREIGN KEY (genreId) REFERENCES Genre
+  productionId INTEGER NOT NULL REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE,
+  genreId INTEGER NOT NULL REFERENCES Genre ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY(productionId,genreId)
 );
 
 -- AWARD
@@ -206,29 +183,21 @@ CREATE TABLE AwardCategory(
 CREATE TABLE Award (
   id INTEGER PRIMARY KEY,
   year INT NOT NULL,
-  productionId INTEGER NOT NULL,
-  awardTypeId INTEGER NOT NULL,
-  awardCategoryId INTEGER NOT NULL,
-  celebId INTEGER NOT NULL,
-  FOREIGN KEY (productionId) REFERENCES Production,
-  FOREIGN KEY (awardTypeId) REFERENCES AwardType,
-  FOREIGN KEY (awardCategoryId) REFERENCES AwardCategory,
-  FOREIGN KEY (celebId) REFERENCES Celebrity
+  productionId INTEGER NOT NULL REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE,
+  awardTypeId INTEGER NOT NULL REFERENCES AwardType ON DELETE CASCADE ON UPDATE CASCADE,
+  awardCategoryId INTEGER NOT NULL REFERENCES AwardCategory ON DELETE CASCADE ON UPDATE CASCADE,
+  celebId INTEGER REFERENCES Celebrity ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE NomineeProduction (
-  awardId INTEGER NOT NULL,
-  productionId INTEGER NOT NULL,
-  PRIMARY KEY (awardId, productionId),
-  FOREIGN KEY (awardId) REFERENCES Award,
-  FOREIGN KEY (productionId) REFERENCES Production
+  awardId INTEGER NOT NULL REFERENCES Award ON DELETE CASCADE ON UPDATE CASCADE,
+  productionId INTEGER NOT NULL REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY (awardId, productionId)
 );
 
 CREATE TABLE NomineeCelebrity (
-  awardId INTEGER NOT NULL,
-  celebId INTEGER NOT NULL,
-  PRIMARY KEY (awardId, celebId),
-  FOREIGN KEY (awardId) REFERENCES Award,
-  FOREIGN KEY (celebId) REFERENCES Celebrity
+  awardId INTEGER NOT NULL REFERENCES Award ON DELETE CASCADE ON UPDATE CASCADE,
+  celebId INTEGER NOT NULL REFERENCES Celebrity ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY (awardId, celebId)
 );
 
