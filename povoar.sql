@@ -9,26 +9,27 @@ INSERT INTO Production VALUES(2, "Game of Thrones", 2011, "Nine noble families f
 INSERT INTO Production VALUES(4, "The Dark Knight", 2008, "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.", "https://www.imdb.com/video/vi324468761?playlistId=tt0468569&ref_=tt_ov_vi");
 INSERT INTO Production VALUES(5, "Breaking Bad", 2008, "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.", NULL);
 
-INSERT INTO Movie VALUES(1, "2:02:00");
-INSERT INTO Movie VALUES(3, "2:02:00");
-INSERT INTO Movie VALUES(4, "2:32:00");
+INSERT INTO Movie VALUES(1, TIME("02:02:00"));
+INSERT INTO Movie VALUES(3, TIME("02:02:00"));
+INSERT INTO Movie VALUES(4, TIME("02:32:00"));
 INSERT INTO Series Values(2, 2019);
 INSERT INTO Series Values(5, 2013);
 INSERT INTO Season Values(1, 2, 2011, 2011);
 INSERT INTO Season Values(2, 5, 2008, 2008);
 INSERT INTO Episode Values(2, 2, "Pilot", NULL, NULL, NULL);
-INSERT INTO Episode VALUES(3, 2, "Felina", "Walter White makes one last attempt to secure his family's future, while also visiting some old enemies, during his final return to Albuquerque.", NULL, "2013-09-29");
-INSERT INTO Episode Values(1, 1, "Winter Is Coming", "A Night's Watch deserter is tracked down; Lord Eddard 'Ned' Stark learns that his mentor has died; Viserys Targaryen plots to win back the throne; Robert arrives at Winterfell with his family; Ned prepares to leave for King's Landing.", "1:02:00", "2011-10-17");
+INSERT INTO Episode VALUES(3, 2, "Felina", "Walter White makes one last attempt to secure his family's future, while also visiting some old enemies, during his final return to Albuquerque.", NULL, DATE("2013-09-29"));
+INSERT INTO Episode Values(1, 1, "Winter Is Coming", "A Night's Watch deserter is tracked down; Lord Eddard 'Ned' Stark learns that his mentor has died; Viserys Targaryen plots to win back the throne; Robert arrives at Winterfell with his family; Ned prepares to leave for King's Landing.", TIME("01:02:00"), DATE("2011-10-17"));
 
 -- PERSON
 
-INSERT INTO Person VALUES(1, "Rafael Valente Cristino", "2000-08-25");
-INSERT INTO Person VALUES(2, "Joaquin Phoenix", "1974-10-28");
-INSERT INTO Person VALUES(3, "Todd Philips", "1970-12-20");
-INSERT INTO Person VALUES(4, "Bronson Webb", "1983-02-20");
-INSERT INTO Person VALUES(5, "Xavier Pisco", "2000-10-29");
-INSERT INTO Person VALUES(6, "Heath Ledger", "1979-04-04");
-INSERT INTO Person VALUES(7, "Vince Gilligan", "1967-02-10");
+INSERT INTO Person VALUES(1, "Rafael Valente Cristino", DATE("2000-08-25"));
+INSERT INTO Person VALUES(2, "Joaquin Phoenix", DATE("1974-10-28"));
+INSERT INTO Person VALUES(3, "Todd Philips", DATE("1970-12-20"));
+INSERT INTO Person VALUES(4, "Bronson Webb", DATE("1983-02-20"));
+INSERT INTO Person VALUES(5, "Xavier Pisco", DATE("2000-10-29"));
+INSERT INTO Person VALUES(6, "Heath Ledger", DATE("1979-04-04"));
+INSERT INTO Person VALUES(7, "Vince Gilligan", DATE("1967-02-10"));
+INSERT INTO Person VALUES(8, "Random Guy", DATE("1950-09-16"));
 INSERT INTO Celebrity VALUES(2, 1.73, "I like sql");
 INSERT INTO Celebrity VALUES(3, 1.83, "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), A Tempo e Horas (2010) and Dias de Loucura (2003).");
 INSERT INTO Celebrity VALUES(4, NULL, "Bronson Webb was born on February 20, 1983 in London, England as Bronson John Webb. He is an actor, known for RocknRolla: A Quadrilha (2008), Reino dos Céus (2005) and Expiação (2007).");
