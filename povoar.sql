@@ -107,6 +107,7 @@ INSERT INTO Season VALUES(18,25,2018,2018);
 INSERT INTO Season VALUES(19,25,2019,2019);
 INSERT INTO Season VALUES(20,25,2020,2020);
 INSERT INTO Season VALUES(21,13,2000,2001);
+INSERT INTO Season VALUES(22,19,2019,2019);
 
 INSERT INTO Episode Values(2, 2, "Pilot", NULL, NULL, NULL);
 INSERT INTO Episode VALUES(3, 2, "Felina", "Walter White makes one last attempt to secure his family's future, while also visiting some old enemies, during his final return to Albuquerque.", NULL, DATE("2013-09-29"));
@@ -129,6 +130,8 @@ INSERT INTO Episode Values(18,13,"The Empty Hearse","Mycroft calls Sherlock back
 INSERT INTO Episode Values(19,13,"The Sign of Three"," Sherlock tries to give the perfect best man speech at John's wedding when he suddenly realizes a murder is about to take place.",TIME("01:26:00"),DATE("2014-01-05"));
 INSERT INTO Episode Values(20,13,"His Last Vow"," Sherlock goes up against Charles Augustus Magnussen, media tycoon and a notorious blackmailer.",TIME("01:29:00"),DATE("2014-01-12"));
 INSERT INTO Episode VALUES(21,21,"The One with Joey's New Brain",NULL,TIME("00:22:00"),DATE("2001-02-15"));
+INSERT INTO Episode VALUES(22,22,"Four Movements","Gina plays a high-stakes game of chess with Capt. Holt; Rosa and Amy take Gina out for a fancy brunch; Jake and Gina must use their wits to infiltrate a posh club.",TIME("00:21:00"),DATE("2019-01-31"));
+INSERT INTO Episode VALUES(23,14,"The Final Problem","A dark secret in the Holmes family rears its head with a vengeance, putting Sherlock and friends through a series of sick, manipulative psychological and potentially fatal games.",TIME("01:29:00"),Date("2017-01-15"));
 -- PERSON
 
 INSERT INTO Person VALUES(1, "Rafael Valente Cristino", DATE("2000-08-25"));
@@ -150,6 +153,11 @@ INSERT INTO Person VALUES(16,"Domhnall Gleeson",DATE("1983-05-12"));
 INSERT INTO Person VALUES(17,"Charlize Theron",DATE("1975-08-07"));
 INSERT INTO Person VALUES(18,"Brad Pitt",DATE("1963-12-18"));
 INSERT INTO Person VALUES(19,"Scott Adsit",DATE("1965-11-26"));
+INSERT INTO Person VALUES(20,"Mario Lopez",DATE("1973-10-10"));
+INSERT INTO Person VALUES(21,"Lara Pulver",DATE("1980-09-01"));
+INSERT INTO Person VALUES(22,"Honor Kneafsey",DATE("2004-08-05"));
+INSERT INTO Person VALUES(23,"Jim Carrey",DATE("1962-09-01"));
+
 
 INSERT INTO Celebrity VALUES(2, 1.73, "I like sql");
 INSERT INTO Celebrity VALUES(3, 1.83, "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), A Tempo e Horas (2010) and Dias de Loucura (2003).");
@@ -166,6 +174,10 @@ INSERT INTO Celebrity VALUES(16,1.85,"Domhnall Gleeson is an Irish actor and wri
 INSERT INTO Celebrity Values(17,1.77,"Charlize Theron was born in Benoni, a city in the greater Johannesburg area, in South Africa, the only child of Gerda Theron (née Maritz) and Charles Theron. She was raised on a farm outside the city. Theron is of Afrikaner (Dutch, with some French Huguenot and German) descent, and Afrikaner military figure Danie Theron was her great-great-uncle.");
 INSERT INTO Celebrity Values(18,1.80,"An actor and producer known as much for his versatility as he is for his handsome face, Golden Globe-winner Brad Pitt's most widely recognized role may be Tyler Durden in Fight Club (1999). However, his portrayals of Billy Beane in Moneyball (2011), and Rusty Ryan in the remake of Ocean's Eleven (2001) and its sequels, also loom large in his filmography.");
 INSERT INTO Celebrity Values(19,1.88,"Scott Adsit performed on the mainstage of Chicago's Second City, between 1994 and 1998, and, alongside Saturday Night Live (1975)'s Rachel Dratch and Tina Fey, was one of the driving forces behind such groundbreaking revues as 'Pinata Full of Bees' and 'Paradigm Lost'.");
+INSERT INTO Celebrity VALUES(20,1.78,"Born in San Diego, California, on October 10th, 1973, to Mario Sr. and Elvira, Mario Lopez's first professional role was on the series, a.k.a. Pablo (1984). Mario is probably best known to youngsters, however, as A.C. Slater from NBC's popular 1980s teen comedy series Saved by the Bell (1989).");
+INSERT INTO Celebrity VALUES(21,1.60,"Lara was born and raised in Essex, UK. She studied drama with the NYMT and went on to gain a BA Honours degree in Theatre.");
+INSERT INTO Celebrity VALUES(22,NULL,NULL);
+INSERT INTO Celebrity VALUES(23,1.88,"Jim Carrey, Canadian-born and a U.S. citizen since 2004, is an actor and producer famous for his rubbery body movements and flexible facial expressions.");
 
 INSERT INTO User VALUES(1, "up201806680@fe.up.pt", "http://link.to.photo", "verysecret");
 INSERT INTO User VALUES(5, "up201806134@fe.up.pt", "http://link.to.photo", "password");
@@ -192,13 +204,19 @@ INSERT INTO ProductionRole VALUES(40,17,3, "Megyn Kelly");
 INSERT INTO ProductionRole VALUES(10,18,5, "Cliff Booth");
 INSERT INTO ProductionRole VALUES(36,18,4,"Tyler Durden");
 INSERT INTO ProductionRole VALUES(35,19,3,"Baymax");
-
+INSERT INTO ProductionRole VALUES(34,23,4,"Dr. Robotnik");
 
 INSERT INTO EpisodeRole VALUES(1, 4, 4, "Will");
 INSERT INTO EpisodeRole VALUES(8,14,5,"Alex Cairns");
 INSERT INTO EpisodeRole VALUES(10,15,3,"Cooper Redfield");
 INSERT INTO EpisodeRole VALUES(9,16,6,"Ash");
 INSERT into EpisodeRole VALUES(21,19,8,"Cecilia Monroe");
+INSERT INTO EpisodeRole VALUES(22,20,8,"Mario Lopez");
+INSERT INTO EpisodeRole VALUES(15,21,4,"Irene Adler");
+INSERT INTO EpisodeRole VALUES(19,21,4,"Irene Adler");
+INSERT INTO EpisodeRole VALUES(15,22,4,"Little Girl");
+INSERT INTO EpisodeRole VALUES(23,22,4,"Girl on Plane");
+
 -- REVIEW
 
 INSERT INTO Review VALUES(1, 1, NULL, NULL, 9);
@@ -211,11 +229,28 @@ INSERT INTO Review VALUES(7, 5, "Best GOT Episode!", "The best episode from Game
 INSERT INTO Review VALUES(8, 5, "Best battle ever!!!", NULL, 10);
 INSERT INTO Review VALUES(9, 5, NULL, "A great ending for a great season", 9);
 INSERT INTO Review VALUES(10,11,NULL, "Be careful what you wish for",8);
+INSERT INTO Review VALUES(11,11,"Perfect blend of action, comedy, and a great soundtrack!",NULL,8);
+INSERT INTO Review VALUES(12,11,NULL,NULL,6);
+INSERT INTO Review VALUES(13,11,"Life's Lessons in one Movie...",NULL,10);
+INSERT INTO Review VALUES(14,11,"A powerful and enjoyable film",NULL,8);
+INSERT INTO Review VALUES(15,11,"No dialogue, No big name actors, no modern music ","No problem! Finally an animated movie that dares to be.... animated! Pixar has set a new standard in digital animation.",10);
+INSERT INTO Review VALUES(16,11,"A beautiful movie","Little Women (2019) is a wonderful movie from every aspect. It has a powerful story, superb acting and beautiful costumes and design.",8);
+INSERT INTO Review VALUES(17,11,"Intense, creative.... disturbing",NULL,9);
+INSERT INTO Review VALUES(18,11,NULL,NULL,9);
+INSERT INTO Review VALUES(19,11,NULL,NULL,9);
+INSERT INTO Review VALUES(20,11,"Exceptional finale", "I enjoyed it",9);
+
 
 INSERT INTO ReviewProduction VALUES(1, 3);
 INSERT INTO ReviewProduction VALUES(3, 6);
 INSERT INTO ReviewProduction VALUES(4, 5);
 INSERT INTO ReviewProduction VALUES(5, 7);
+INSERT into ReviewProduction VALUES(11,28);
+INSERT into ReviewProduction VALUES(12,30);
+INSERT into ReviewProduction VALUES(13,31);
+INSERT into ReviewProduction VALUES(14,40);
+INSERT into ReviewProduction VALUES(15,38);
+INSERT into ReviewProduction VALUES(16,39);
 
 INSERT INTO ReviewEpisode VALUES(2, 1);
 INSERT INTO ReviewEpisode VALUES(6, 4);
@@ -223,6 +258,11 @@ INSERT INTO ReviewEpisode VALUES(7, 5);
 INSERT INTO ReviewEpisode VALUES(8, 6);
 INSERT INTO ReviewEpisode VALUES(9, 7);
 INSERT INTO ReviewEpisode VALUES(10,9);
+INSERT INTO ReviewEpisode VALUES(17,10);
+INSERT INTO ReviewEpisode VALUES(18,11);
+INSERT INTO ReviewEpisode VALUES(19,12);
+INSERT INTO ReviewEpisode VALUES(20,23);
+
 
 -- LIST
 
@@ -250,6 +290,10 @@ INSERT INTO Genre VALUES(6, "Thriller");
 INSERT INTO Genre VALUES(7, "Crime");
 INSERT INTO Genre VALUES(8, "Medieval");
 INSERT INTO Genre VALUES(9, "Mystery");
+INSERT INTO Genre VALUES(10, "TV Series");
+INSERT INTO Genre VALUES(11, "Animation");
+INSERT INTO Genre VALUES(12, "Adventure");
+INSERT INTO Genre VALUES(13,"Musical");
 
 INSERT INTO BelongsToGenre VALUES(1, 1);
 INSERT INTO BelongsToGenre VALUES(1, 2);
@@ -264,6 +308,11 @@ INSERT INTO BelongsToGenre VALUES(4, 7);
 INSERT INTO BelongsToGenre VALUES(7, 7);
 INSERT INTO BelongsToGenre VALUES(7, 5);
 INSERT INTO BelongsToGenre VALUES(7, 9);
+INSERT INTO BelongsToGenre VALUES(23,10);
+INSERT INTO BelongsToGenre VALUES(30,13);
+INSERT into BelongsToGenre VALUES(35,11);
+INSERT into BelongsToGenre VALUES(35,12);
+
 
 
 -- AWARD
@@ -280,6 +329,7 @@ INSERT INTO AwardCategory VALUES(4, "Best Motion Picture of the Year");
 INSERT INTO AwardCategory VALUES(5, "Best Cinematography");
 INSERT INTO AwardCategory VALUES(6, "Best Music, Original Score");
 INSERT INTO AwardCategory VALUES(7, "Outstanding Drama Series");
+INSERT INTO AwardCategory VALUES(8,"Actress in a Leading Role");
 
 INSERT INTO Award VALUES(1, 2020, 3, 1, 1, 2);
 INSERT INTO Award VALUES(2, 2009, 4, 1, 3, 6);
@@ -290,6 +340,8 @@ INSERT INTO Award VALUES(6, 2018, 2, 4, 7, NULL);
 INSERT INTO Award VALUES(7, 2016, 2, 4, 7, NULL);
 INSERT INTO Award VALUES(8, 2015, 2, 4, 7, NULL);
 INSERT INTO Award VALUES(9, 2016, 8, 1, 1, 12);
+INSERT INTO Award VALUES(10, 2019, 40, 1, 8, 17);
+
 
 INSERT INTO NomineeProduction VALUES(1, 3);
 INSERT INTO NomineeProduction VALUES(2, 4);
@@ -309,8 +361,5 @@ INSERT INTO NomineeCelebrity VALUES(4, 9);
 INSERT INTO NomineeCelebrity VALUES(9, 12);
 INSERT INTO NomineeCelebrity VALUES(9, 13);
 INSERT INTO NomineeCelebrity VALUES(1, 12);
-
-
-
-
+INSERT INTO NomineeCelebrity VALUES(10,17);
 
