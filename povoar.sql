@@ -157,7 +157,12 @@ INSERT INTO Person VALUES(20,"Mario Lopez",DATE("1973-10-10"));
 INSERT INTO Person VALUES(21,"Lara Pulver",DATE("1980-09-01"));
 INSERT INTO Person VALUES(22,"Honor Kneafsey",DATE("2004-08-05"));
 INSERT INTO Person VALUES(23,"Jim Carrey",DATE("1962-09-01"));
-
+INSERT INTO Person VALUES(24,"Sam Smith",DATE("1970-09-02"));
+INSERT INTO Person VALUES(25,"Keith Johnson",DATE("2000-10-02"));
+INSERT INTO Person VALUES(26,"Sarah Audrey",DATE("1994-05-10"));
+INSERT INTO Person VALUES(27,"John Harrington",DATE("1964-08-24"));
+INSERT INTO Person VALUES(28,"Chris Bale",DATE("1970-09-20"));
+INSERT INTO Person VALUES(29,"Chris Saint",DATE("1972-10-22"));
 
 INSERT INTO Celebrity VALUES(2, 1.73, "I like sql");
 INSERT INTO Celebrity VALUES(3, 1.83, "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), A Tempo e Horas (2010) and Dias de Loucura (2003).");
@@ -183,6 +188,13 @@ INSERT INTO User VALUES(1, "up201806680@fe.up.pt", "http://link.to.photo", "very
 INSERT INTO User VALUES(5, "up201806134@fe.up.pt", "http://link.to.photo", "password");
 INSERT INTO User VALUES(8, "random.email@gmail.com", NULL, "donttellanyone");
 INSERT INTO User VALUES(11,"up201806723@fe.up.pt",NULL,"danger1234");
+INSERT INTO User VALUES(24,"random.email1@gmail.com",NULL,"danger1234");
+INSERT INTO User VALUES(25,"random.email2@gmail.com",NULL,"danger1234");
+INSERT INTO User VALUES(26,"random.email3@gmail.com",NULL,"danger1234");
+INSERT INTO User VALUES(27,"random.email4@gmail.com",NULL,"danger1234");
+INSERT INTO User VALUES(28,"random.email5@gmail.com",NULL,"danger1234");
+INSERT INTO User VALUES(29,"random.email6@gmail.com",NULL,"danger1234");
+
 
 -- ROLE
 
@@ -269,6 +281,14 @@ INSERT INTO ReviewEpisode VALUES(20,23);
 INSERT INTO List VALUES(1, "My favorite Movies and Series", 1, 1);
 INSERT INTO List VALUES(2, "Best movies to watch in quarantine", 8, 0);
 INSERT INTO List VALUES(3, "My to watch list", 11, 1);
+INSERT INTO List VALUES(4, "Awesome Movies", 24, 0);
+INSERT INTO List VALUES(5, "Fantasy Rocks", 25, 0);
+INSERT INTO List VALUES(6, "To watch", 26, 1);
+INSERT INTO List VALUES(7, "All time best", 27, 0);
+INSERT INTO List VALUES(8, "Cool movies", 28, 1);
+INSERT INTO List VALUES(9, "Worst movies", 27, 0);
+INSERT INTO List VALUES(10, "Weekly watches", 28, 0);
+INSERT INTO List VALUES(11, "My obsessions", 8, 0);
 
 INSERT INTO BelongsToList VALUES(1, 1);
 INSERT INTO BelongsToList VALUES(1, 2);
@@ -279,6 +299,20 @@ INSERT INTO BelongsToList VALUES(2, 3);
 INSERT INTO BelongsToList VALUES(3, 7);
 INSERT INTO BelongsToList VALUES(3, 6);
 INSERT INTO BelongsToList VALUES(3,11);
+INSERT INTO BelongsToList VALUES(4, 1);
+INSERT INTO BelongsToList VALUES(4, 4);
+INSERT INTO BelongsToList VALUES(5, 1);
+INSERT INTO BelongsToList VALUES(5, 2);
+INSERT INTO BelongsToList VALUES(5, 6);
+INSERT INTO BelongsToList VALUES(6, 31);
+INSERT INTO BelongsToList VALUES(7, 27);
+INSERT INTO BelongsToList VALUES(7, 31);
+INSERT INTO BelongsToList VALUES(7, 5);
+INSERT INTO BelongsToList VALUES(8, 34);
+INSERT INTO BelongsToList VALUES(8, 37);
+INSERT INTO BelongsToList VALUES(8, 38);
+INSERT INTO BelongsToList VALUES(8, 10);
+INSERT INTO BelongsToList VALUES(10, 5);
 -- GENRE
 
 INSERT INTO Genre VALUES(1, "Fantasy");

@@ -1,10 +1,3 @@
-/*
-** Remember to check if the table exists: **
-drop table if exists R1;
-...
-create table R1 (....);
-...*/
-
 drop table if exists ProductionRole;
 drop table if exists EpisodeRole;
 drop table if exists Role;
@@ -24,6 +17,18 @@ drop table if exists NomineeCelebrity;
 drop table if exists Celebrity;
 drop table if exists User;
 drop table if exists Person; 
+
+Drop table if EXISTS BelongsToGenre;
+Drop table if EXISTS Genre;
+
+drop table if exists Episode;
+drop table if exists Season;
+drop table if exists Movie;
+drop table if exists Series;
+drop table if exists Production;
+
+Drop table if EXISTS AwardType;
+Drop table if EXISTS AwardCategory;
 
 
 -- PERSON
@@ -46,15 +51,6 @@ create table User (
     profilePicture TEXT, -- link to the picture
     password NOT NULL CHECK(length(password) > 5)
 );
-
-Drop table if EXISTS BelongsToGenre;
-Drop table if EXISTS Genre;
-
-drop table if exists Episode;
-drop table if exists Season;
-drop table if exists Movie;
-drop table if exists Series;
-drop table if exists Production;
 
 -- PRODUCTION
 
@@ -166,9 +162,6 @@ CREATE TABLE BelongsToGenre(
 );
 
 -- AWARD
-
-Drop table if EXISTS AwardType;
-Drop table if EXISTS AwardCategory;
 
 CREATE TABLE AwardType(
   id INTEGER PRIMARY KEY,
