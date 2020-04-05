@@ -42,7 +42,7 @@ create table Celebrity (
 
 create table User (
     personId INTEGER PRIMARY KEY REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE,
-    mail TEXT UNIQUE,
+    mail TEXT NOT NULL UNIQUE,
     profilePicture TEXT, -- link to the picture
     password NOT NULL CHECK(length(password) > 5)
 );
