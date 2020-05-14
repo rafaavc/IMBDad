@@ -163,6 +163,7 @@ INSERT INTO Person VALUES(26,"Sarah Audrey",DATE("1994-05-10"));
 INSERT INTO Person VALUES(27,"John Harrington",DATE("1964-08-24"));
 INSERT INTO Person VALUES(28,"Chris Bale",DATE("1970-09-20"));
 INSERT INTO Person VALUES(29,"Chris Saint",DATE("1972-10-22"));
+INSERT INTO Person VALUES(30, "Peter Dinklage", DATE("1969-06-11"));
 
 INSERT INTO Celebrity VALUES(2, 1.73, "I like sql");
 INSERT INTO Celebrity VALUES(3, 1.83, "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), A Tempo e Horas (2010) and Dias de Loucura (2003).");
@@ -183,6 +184,7 @@ INSERT INTO Celebrity VALUES(20,1.78,"Born in San Diego, California, on October 
 INSERT INTO Celebrity VALUES(21,1.60,"Lara was born and raised in Essex, UK. She studied drama with the NYMT and went on to gain a BA Honours degree in Theatre.");
 INSERT INTO Celebrity VALUES(22,NULL,NULL);
 INSERT INTO Celebrity VALUES(23,1.88,"Jim Carrey, Canadian-born and a U.S. citizen since 2004, is an actor and producer famous for his rubbery body movements and flexible facial expressions.");
+INSERT INTO Celebrity VALUES(30,1.32, "Peter Dinklage is an American actor");
 
 INSERT INTO User VALUES(1, "up201806680@fe.up.pt", "http://link.to.photo", "verysecret");
 INSERT INTO User VALUES(5, "up201806134@fe.up.pt", "http://link.to.photo", "password");
@@ -217,6 +219,7 @@ INSERT INTO ProductionRole VALUES(10,18,5, "Cliff Booth");
 INSERT INTO ProductionRole VALUES(36,18,4,"Tyler Durden");
 INSERT INTO ProductionRole VALUES(35,19,3,"Baymax");
 INSERT INTO ProductionRole VALUES(34,23,4,"Dr. Robotnik");
+INSERT INTO ProductionRole VALUES(2, 30, 5, "Tyrion Lannister");
 
 INSERT INTO EpisodeRole VALUES(1, 4, 4, "Will");
 INSERT INTO EpisodeRole VALUES(8,14,5,"Alex Cairns");
@@ -364,6 +367,7 @@ INSERT INTO AwardCategory VALUES(5, "Best Cinematography");
 INSERT INTO AwardCategory VALUES(6, "Best Music, Original Score");
 INSERT INTO AwardCategory VALUES(7, "Outstanding Drama Series");
 INSERT INTO AwardCategory VALUES(8,"Actress in a Leading Role");
+INSERT INTO AwardCategory VALUES(9, "Outstanding Supporting Actor in a Drama Series");
 
 INSERT INTO Award VALUES(1, 2020, 3, 1, 1, 2);
 INSERT INTO Award VALUES(2, 2009, 4, 1, 3, 6);
@@ -375,6 +379,11 @@ INSERT INTO Award VALUES(7, 2016, 2, 4, 7, NULL);
 INSERT INTO Award VALUES(8, 2015, 2, 4, 7, NULL);
 INSERT INTO Award VALUES(9, 2016, 8, 1, 1, 12);
 INSERT INTO Award VALUES(10, 2019, 40, 1, 8, 17);
+INSERT INTO Award VALUES(11, 2020, 3, 3, 1, 2);
+INSERT INTO Award VALUES(12, 2019, 2, 4, 9, 30);
+INSERT INTO Award VALUES(13, 2018, 2, 4, 9, 30);
+INSERT INTO Award VALUES(14, 2015, 2, 4, 9, 30);
+INSERT INTO Award VALUES(15, 2011, 2, 4, 9, 30);
 
 
 INSERT INTO NomineeProduction VALUES(1, 3);
