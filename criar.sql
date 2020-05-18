@@ -77,7 +77,7 @@ CREATE TABLE Season (
   id INTEGER PRIMARY KEY,
   seriesId INTEGER NOT NULL REFERENCES Series ON DELETE CASCADE ON UPDATE CASCADE,
   yearStarted INTEGER NOT NULL,
-  yearFinished INTEGER
+  yearFinished INTEGER CHECK(yearFinished >= yearStarted)
 );
 
 CREATE TABLE Episode (
