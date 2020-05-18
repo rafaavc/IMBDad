@@ -139,7 +139,8 @@ CREATE TABLE List(
   id INTEGER PRIMARY KEY,
   name TEXT NOT NULL,
   userId INTEGER REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
-  private BOOLEAN NOT NULL
+  private BOOLEAN NOT NULL,
+  UNIQUE(userId, name)
 );
 
 CREATE TABLE BelongsToList(
@@ -178,7 +179,8 @@ CREATE TABLE Award (
   productionId INTEGER REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE,
   awardTypeId INTEGER NOT NULL REFERENCES AwardType ON DELETE CASCADE ON UPDATE CASCADE,
   awardCategoryId INTEGER NOT NULL REFERENCES AwardCategory ON DELETE CASCADE ON UPDATE CASCADE,
-  celebId INTEGER REFERENCES Celebrity ON DELETE SET NULL ON UPDATE CASCADE --- NULL when award its for the movie and not the celebrity
+  celebId INTEGER REFERENCES Celebrity ON DELETE SET NULL ON UPDATE CASCADE, --- NULL when award its for the movie and not the celebrity
+  UNIQUE(year, awardTypeId, awardCategoryId)
 );
 
 CREATE TABLE NomineeProduction (
