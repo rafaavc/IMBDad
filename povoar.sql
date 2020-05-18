@@ -43,6 +43,7 @@ INSERT INTO Production VALUES(37,"Intouchables",2011,"After he becomes a quadrip
 INSERT INTO Production VALUES(38,"WALL·E",2008,"In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.","https://www.imdb.com/video/vi2192703769?playlistId=tt0910970&ref_=tt_ov_vi");
 INSERT INTO Production VALUES(39,"Little Women",2019,"Jo March (Saoirse Ronan) reflects back and forth on her life, telling the beloved story of the March sisters - four young women each determined to live life on her own terms.","https://www.imdb.com/video/vi2655304729?playlistId=tt3281548&ref_=tt_ov_vi");
 INSERT INTO Production VALUES(40,"Bombshell",2019,"A group of women take on Fox News head Roger Ailes and the toxic atmosphere he presided over at the network.","https://www.imdb.com/video/vi2331492121?playlistId=tt6394270&ref_=tt_ov_vi");
+INSERT INTO Production VALUES(41,"Three Billboards Oustide Edding, Missouri", 2017, "A mother personally challenges the local authorities to solve her daughter's murder when they fail to catch the culprit.", NULL);
 
 INSERT INTO Movie VALUES(1, TIME("02:02:00"));
 INSERT INTO Movie VALUES(3, TIME("02:02:00"));
@@ -64,6 +65,7 @@ INSERT INTO Movie VALUES(37, TIME("01:52:00"));
 INSERT INTO Movie VALUES(38, TIME("01:38:00"));
 INSERT INTO Movie VALUES(39, TIME("02:15:00"));
 INSERT INTO Movie VALUES(40, TIME("01:49:00"));
+INSERT INTO Movie VALUES(41, TIME("01:55:00"));
 
 INSERT INTO Series Values(2, 2019);
 INSERT INTO Series Values(5, 2013);
@@ -220,6 +222,7 @@ INSERT INTO ProductionRole VALUES(36,18,4,"Tyler Durden");
 INSERT INTO ProductionRole VALUES(35,19,3,"Baymax");
 INSERT INTO ProductionRole VALUES(34,23,4,"Dr. Robotnik");
 INSERT INTO ProductionRole VALUES(2, 30, 5, "Tyrion Lannister");
+INSERT INTO ProductionRole VALUES(41, 30, 5, "James");
 
 INSERT INTO EpisodeRole VALUES(1, 4, 4, "Will");
 INSERT INTO EpisodeRole VALUES(8,14,5,"Alex Cairns");
