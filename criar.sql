@@ -1,4 +1,4 @@
-drop table if exists ProductionRole;
+drop table if exists MovieRole;
 drop table if exists EpisodeRole;
 drop table if exists Role;
 
@@ -97,12 +97,12 @@ CREATE TABLE Role (
   name text UNIQUE
 );
 
-CREATE TABLE ProductionRole (
-  productionId INTEGER NOT NULL REFERENCES Production ON DELETE CASCADE ON UPDATE CASCADE,
+CREATE TABLE MovieRole (
+  movieId INTEGER NOT NULL REFERENCES Movie ON DELETE CASCADE ON UPDATE CASCADE,
   celebId INTEGER NOT NULL REFERENCES Celebrity ON DELETE CASCADE ON UPDATE CASCADE,
   roleId INTEGER NOT NULL REFERENCES Role ON DELETE CASCADE ON UPDATE CASCADE,
   characterName TEXT,
-  PRIMARY KEY (productionId, celebId, roleId)
+  PRIMARY KEY (movieId, celebId, roleId)
 );
 
 CREATE TABLE EpisodeRole (

@@ -8,8 +8,8 @@ Select Person.name
 FROM Person
 WHERE Person.id IN (
     SELECT Celebrity.personId
-    FROM (Celebrity, ProductionRole on personId = celebId), Movie on ProductionRole.productionId = Movie.productionId
+    FROM (Celebrity, MovieRole on personId = celebId), Movie on MovieRole.movieId = Movie.productionId
 ) AND Person.id IN (
     SELECT Celebrity.personId
-    FROM (Celebrity, ProductionRole on personId = celebId), Series on ProductionRole.productionId = Series.productionId
+    FROM (((Celebrity, EpisodeRole on personId = celebId), Episode on episodeId = Episode.id), Season on seasonId = Season.id), Series on seriesId = Series.productionId
 );
