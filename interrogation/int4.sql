@@ -4,7 +4,7 @@
 
 --Obter a lista de celebridades que venceram pelo menos um Óscar e os seus respectivos filmes (bem como a categoria).
 
-SELECT Person.name, Production.name, AwardCategory.name 
+SELECT Person.name as Actor, Production.name as Production, AwardCategory.name as Category 
 FROM Person, Production, AwardCategory, (
 	SELECT DISTINCT Celebrity.personId AS cId, Production.id AS pId, Award.awardTypeId, Award.awardCategoryId AS aCId 
 	FROM Celebrity, Production, Award 

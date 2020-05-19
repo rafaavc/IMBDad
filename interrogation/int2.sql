@@ -5,7 +5,7 @@
 --Qual a segunda celebridade que ganhou mais prémios? Sem usar max
 
 
-SELECT distinct(Person.name)
+SELECT distinct(Person.name) as Actor/Actress
 FROM Person, (
     SELECT C1.CelebId AS CelebId, DENSE_RANK () OVER ( ORDER BY C1.celebIdCount Desc ) as rnk
     FROM (SELECT A1.celebId as CelebId, count(A1.celebId) as celebIdCount
