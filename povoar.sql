@@ -166,6 +166,7 @@ INSERT INTO Person VALUES(27,"John Harrington",DATE("1964-08-24"));
 INSERT INTO Person VALUES(28,"Chris Bale",DATE("1970-09-20"));
 INSERT INTO Person VALUES(29,"Chris Saint",DATE("1972-10-22"));
 INSERT INTO Person VALUES(30, "Peter Dinklage", DATE("1969-06-11"));
+INSERT INTO Person VALUES(31, "Susan Sarandon", DATE("1946-10-04"));
 
 INSERT INTO Celebrity VALUES(2, 1.73, "I like sql");
 INSERT INTO Celebrity VALUES(3, 1.83, "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), A Tempo e Horas (2010) and Dias de Loucura (2003).");
@@ -187,6 +188,7 @@ INSERT INTO Celebrity VALUES(21,1.60,"Lara was born and raised in Essex, UK. She
 INSERT INTO Celebrity VALUES(22,NULL,NULL);
 INSERT INTO Celebrity VALUES(23,1.88,"Jim Carrey, Canadian-born and a U.S. citizen since 2004, is an actor and producer famous for his rubbery body movements and flexible facial expressions.");
 INSERT INTO Celebrity VALUES(30,1.32, "Peter Dinklage is an American actor");
+INSERT INTO Celebrity VALUES(31,1.70, NULL);
 
 INSERT INTO User VALUES(1, "up201806680@fe.up.pt", "http://link.to.photo", "verysecret");
 INSERT INTO User VALUES(5, "up201806134@fe.up.pt", "http://link.to.photo", "password");
@@ -231,7 +233,7 @@ INSERT INTO EpisodeRole VALUES(7, 30, 5, "Tyrion Lannister");
 INSERT INTO EpisodeRole VALUES(8,14,5,"Alex Cairns");
 INSERT INTO EpisodeRole VALUES(10,15,3,"Cooper Redfield");
 INSERT INTO EpisodeRole VALUES(9,16,6,"Ash");
-INSERT into EpisodeRole VALUES(21,19,8,"Cecilia Monroe");
+INSERT into EpisodeRole VALUES(21,31,8,"Cecilia Monroe");
 INSERT INTO EpisodeRole VALUES(22,20,8,"Mario Lopez");
 INSERT INTO EpisodeRole VALUES(15,21,4,"Irene Adler");
 INSERT INTO EpisodeRole VALUES(19,21,4,"Irene Adler");
