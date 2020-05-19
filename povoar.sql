@@ -262,6 +262,8 @@ INSERT INTO Review VALUES(17,11,"Intense, creative.... disturbing",NULL,9);
 INSERT INTO Review VALUES(18,11,NULL,NULL,9);
 INSERT INTO Review VALUES(19,11,NULL,NULL,9);
 INSERT INTO Review VALUES(20,11,"Exceptional finale", "I enjoyed it",9);
+INSERT INTO Review VALUES(21,8,NULL,NULL,8);
+INSERT INTO Review VALUES(22,1,NULL,NULL,9);
 
 
 INSERT INTO ReviewProduction VALUES(1, 3);
@@ -274,6 +276,9 @@ INSERT into ReviewProduction VALUES(13,31);
 INSERT into ReviewProduction VALUES(14,40);
 INSERT into ReviewProduction VALUES(15,38);
 INSERT into ReviewProduction VALUES(16,39);
+INSERT into ReviewProduction VALUES(21,39);
+INSERT into ReviewProduction VALUES(22,39);
+
 
 INSERT INTO ReviewEpisode VALUES(2, 1);
 INSERT INTO ReviewEpisode VALUES(6, 4);
