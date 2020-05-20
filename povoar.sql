@@ -166,6 +166,7 @@ INSERT INTO Person VALUES(27,"John Harrington",DATE("1964-08-24"));
 INSERT INTO Person VALUES(28,"Chris Bale",DATE("1970-09-20"));
 INSERT INTO Person VALUES(29,"Chris Saint",DATE("1972-10-22"));
 INSERT INTO Person VALUES(30, "Peter Dinklage", DATE("1969-06-11"));
+INSERT INTO Person VALUES(31, "Susan Sarandon", DATE("1946-10-04"));
 
 INSERT INTO Celebrity VALUES(2, 1.73, "I like sql");
 INSERT INTO Celebrity VALUES(3, 1.83, "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), A Tempo e Horas (2010) and Dias de Loucura (2003).");
@@ -187,6 +188,7 @@ INSERT INTO Celebrity VALUES(21,1.60,"Lara was born and raised in Essex, UK. She
 INSERT INTO Celebrity VALUES(22,NULL,NULL);
 INSERT INTO Celebrity VALUES(23,1.88,"Jim Carrey, Canadian-born and a U.S. citizen since 2004, is an actor and producer famous for his rubbery body movements and flexible facial expressions.");
 INSERT INTO Celebrity VALUES(30,1.32, "Peter Dinklage is an American actor");
+INSERT INTO Celebrity VALUES(31,1.70, NULL);
 
 INSERT INTO User VALUES(1, "up201806680@fe.up.pt", "http://link.to.photo", "verysecret");
 INSERT INTO User VALUES(5, "up201806134@fe.up.pt", "http://link.to.photo", "password");
@@ -211,24 +213,27 @@ INSERT INTO Role VALUES(6,"Deuteragonist");
 INSERT into Role VALUES(7,"Producer");
 INSERT into Role VALUES(8,"Special Guest");
 
-INSERT INTO ProductionRole VALUES(3, 2, 3, "Joker");
-INSERT INTO ProductionRole VALUES(4, 6, 4, "Joker");
-INSERT INTO ProductionRole VALUES(5, 7, 1, NULL);
-INSERT INTO ProductionRole VALUES(5, 7, 2, NULL);
-INSERT INTO ProductionRole VALUES(40,17,7, NULL);
-INSERT INTO ProductionRole VALUES(40,17,3, "Megyn Kelly");
-INSERT INTO ProductionRole VALUES(10,18,5, "Cliff Booth");
-INSERT INTO ProductionRole VALUES(36,18,4,"Tyler Durden");
-INSERT INTO ProductionRole VALUES(35,19,3,"Baymax");
-INSERT INTO ProductionRole VALUES(34,23,4,"Dr. Robotnik");
-INSERT INTO ProductionRole VALUES(2, 30, 5, "Tyrion Lannister");
-INSERT INTO ProductionRole VALUES(41, 30, 5, "James");
+INSERT INTO MovieRole VALUES(3, 2, 3, "Joker");
+INSERT INTO MovieRole VALUES(4, 6, 4, "Joker");
+INSERT INTO MovieRole VALUES(40,17,7, NULL);
+INSERT INTO MovieRole VALUES(40,17,3, "Megyn Kelly");
+INSERT INTO MovieRole VALUES(10,18,5, "Cliff Booth");
+INSERT INTO MovieRole VALUES(36,18,4,"Tyler Durden");
+INSERT INTO MovieRole VALUES(35,19,3,"Baymax");
+INSERT INTO MovieRole VALUES(34,23,4,"Dr. Robotnik");
+INSERT INTO MovieRole VALUES(41, 30, 5, "James");
 
 INSERT INTO EpisodeRole VALUES(1, 4, 4, "Will");
+INSERT INTO EpisodeRole VALUES(2, 7, 1, NULL);
+INSERT INTO EpisodeRole VALUES(2, 7, 2, NULL);
+INSERT INTO EpisodeRole VALUES(1, 30, 5, "Tyrion Lannister");
+INSERT INTO EpisodeRole VALUES(5, 30, 5, "Tyrion Lannister");
+INSERT INTO EpisodeRole VALUES(6, 30, 5, "Tyrion Lannister");
+INSERT INTO EpisodeRole VALUES(7, 30, 5, "Tyrion Lannister");
 INSERT INTO EpisodeRole VALUES(8,14,5,"Alex Cairns");
 INSERT INTO EpisodeRole VALUES(10,15,3,"Cooper Redfield");
 INSERT INTO EpisodeRole VALUES(9,16,6,"Ash");
-INSERT into EpisodeRole VALUES(21,19,8,"Cecilia Monroe");
+INSERT into EpisodeRole VALUES(21,31,8,"Cecilia Monroe");
 INSERT INTO EpisodeRole VALUES(22,20,8,"Mario Lopez");
 INSERT INTO EpisodeRole VALUES(15,21,4,"Irene Adler");
 INSERT INTO EpisodeRole VALUES(19,21,4,"Irene Adler");
@@ -257,6 +262,8 @@ INSERT INTO Review VALUES(17,11,"Intense, creative.... disturbing",NULL,9);
 INSERT INTO Review VALUES(18,11,NULL,NULL,9);
 INSERT INTO Review VALUES(19,11,NULL,NULL,9);
 INSERT INTO Review VALUES(20,11,"Exceptional finale", "I enjoyed it",9);
+INSERT INTO Review VALUES(21,8,NULL,NULL,8);
+INSERT INTO Review VALUES(22,1,NULL,NULL,9);
 
 
 INSERT INTO ReviewProduction VALUES(1, 3);
@@ -269,6 +276,9 @@ INSERT into ReviewProduction VALUES(13,31);
 INSERT into ReviewProduction VALUES(14,40);
 INSERT into ReviewProduction VALUES(15,38);
 INSERT into ReviewProduction VALUES(16,39);
+INSERT into ReviewProduction VALUES(21,39);
+INSERT into ReviewProduction VALUES(22,39);
+
 
 INSERT INTO ReviewEpisode VALUES(2, 1);
 INSERT INTO ReviewEpisode VALUES(6, 4);
