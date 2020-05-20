@@ -4,7 +4,7 @@
 
 --Celebridades que ganharam dois ou mais prémios num mesmo filme ou série.
 
-SELECT distinct (Person.name)
+SELECT (Person.name)
 FROM Person
 WHERE id in (
     SELECT A1.CelebId
