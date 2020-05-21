@@ -1,4 +1,9 @@
 
+/*
+Ao adicionar ou dar update a uma Award verifica se a Production já foi nomeada para essa award.
+O mesmo para Celebrity.
+Desta maneira, uma Production e uma Clebrity não podem ser premiados sem serem nomeados.
+*/
 
 create Trigger NomineesAwardUpdate
 before UPDATE of productionId, celebId on Award
@@ -12,7 +17,7 @@ WHEN ((New.productionId not NULL) AND New.productionId not in (
         WHERE New.id = NomineeCelebrity.awardId
     ))
 Begin
-    Select raise(FAIL, "Production and/or celebrity needs to be nominated.");
+    Select raise(FAIL, "Production and/or celebrity needs to be nominated before winning an Award.");
 End;
 
 
@@ -28,5 +33,5 @@ WHEN ((New.productionId not NULL) AND New.productionId not in (
         WHERE New.id = NomineeCelebrity.awardId
     ))
 Begin
-    Select raise(FAIL, "Production and/or celebrity needs to be nominated.");
+    Select raise(FAIL, "Production and/or celebrity needs to be nominated before winning an Award.");
 End;
