@@ -1,4 +1,4 @@
-
+PRAGMA foreign_keys = ON;
 PRAGMA case_sensitive_like=OFF;
 
 /*
