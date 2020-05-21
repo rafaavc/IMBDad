@@ -228,15 +228,15 @@ INSERT INTO EpisodeRole VALUES(2, 7, 1, NULL);
 INSERT INTO EpisodeRole VALUES(2, 7, 2, NULL);
 INSERT INTO EpisodeRole VALUES(1, 30, 5, "Tyrion Lannister");
 INSERT INTO EpisodeRole VALUES(5, 30, 5, "Tyrion Lannister");
-INSERT INTO EpisodeRole VALUES(6, 30, 5, "Tyrion Lannister");
-INSERT INTO EpisodeRole VALUES(7, 30, 5, "Tyrion Lannister");
+--INSERT INTO EpisodeRole VALUES(6, 30, 5, "Tyrion Lannister");
+--INSERT INTO EpisodeRole VALUES(7, 30, 5, "Tyrion Lannister");
 INSERT INTO EpisodeRole VALUES(8,14,5,"Alex Cairns");
 INSERT INTO EpisodeRole VALUES(10,15,3,"Cooper Redfield");
 INSERT INTO EpisodeRole VALUES(9,16,6,"Ash");
 INSERT into EpisodeRole VALUES(21,31,8,"Cecilia Monroe");
 INSERT INTO EpisodeRole VALUES(22,20,8,"Mario Lopez");
 INSERT INTO EpisodeRole VALUES(15,21,4,"Irene Adler");
-INSERT INTO EpisodeRole VALUES(19,21,4,"Irene Adler");
+--INSERT INTO EpisodeRole VALUES(19,21,4,"Irene Adler");
 INSERT INTO EpisodeRole VALUES(15,22,4,"Little Girl");
 INSERT INTO EpisodeRole VALUES(23,22,4,"Girl on Plane");
 
