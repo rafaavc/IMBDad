@@ -180,7 +180,8 @@ CREATE TABLE Award (
   awardTypeId INTEGER NOT NULL REFERENCES AwardType ON DELETE CASCADE ON UPDATE CASCADE,
   awardCategoryId INTEGER NOT NULL REFERENCES AwardCategory ON DELETE CASCADE ON UPDATE CASCADE,
   celebId INTEGER REFERENCES Celebrity ON DELETE SET NULL ON UPDATE CASCADE, --- NULL when award its for the movie and not the celebrity
-  UNIQUE(year, awardTypeId, awardCategoryId)
+  UNIQUE(year, awardTypeId, awardCategoryId),
+  CHECK ((celebId IS NOT NULL AND productionId IS NOT NULL) or (celebId IS NULL AND productionId IS NOT NULL) or (celebId IS NULL AND productionId IS NULL))
 );
 
 CREATE TABLE NomineeProduction (
