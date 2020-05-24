@@ -22,13 +22,3 @@ select User1.name as user1Name, User2.name as user2Name, Pairs.rating
 from
 (Person as User1  inner join Pairs on(User1.id = Pairs.user1Id))
 inner join Person as User2 on (User2.id = Pairs.user2Id);
-
-
-/*Select Person.id as userId, Person.name as userName, Review.rating 
-from Person, Review 
-where Person.id=Review.userId AND Review.id in (
-    Select  R1.id
-    FROM Review as R1, Review as R2 on (R1.rating = R2.rating and R1.userId != R2.userId)
-    WHERE R1.id in reviewIds and R2.id in reviewIds
-);*/
-
