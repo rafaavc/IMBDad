@@ -2,7 +2,7 @@
 .headers	on
 .nullvalue	NULL
 
-Select Person.name as CelebrityName, Production.name as ProductionName, Role.name as Role
+Select Person.name as CelebrityName, Production.name as ProductionName, Role.name as roleName
 FROM Person, Production, Role
 WHERE (Person.id ,Production.id, Role.id) in (
     SELECT celebId, movieId as productionId, roleId

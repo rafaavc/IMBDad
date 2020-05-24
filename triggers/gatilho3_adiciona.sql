@@ -20,8 +20,31 @@ when New.celebId not in (
 ) and New.celebId not in (
     Select celebId
     From Movie, MovieRole on Movie.productionId = MovieRole.movieId, NomineeProduction on Movie.productionId = NomineeProduction.productionId
-    Where New.awardId = NomineeProduction.productionId
+    Where New.awardId = NomineeProduction.awardId
 )
 Begin
     Select raise(Fail, "Production where celebrity participates must be nominated");
+End;
+
+Create Trigger WinnersMustBePartOfProductionAndBeNominated
+Before update on Award
+when (New.celebId not in (
+    Select celebId
+    From CelebsInSeries
+    Where productionId = New.productionId
+) and New.celebId not in (
+    Select celebId
+    From Movie, MovieRole on Movie.productionId = MovieRole.movieId
+    Where Movie.productionId = New.productionId
+)) or New.productionId not in (
+    select productionId
+    from NomineeProduction
+    where awardId = New.id
+) or (New.celebId is not null and (New.celebId not in (
+    select celebId
+    from NomineeCelebrity
+    where awardId = New.id
+)))
+Begin
+    Select raise(Fail, "The celebrity must participate in the production winner, and both the production and celebrity winners must be nominated");
 End;
