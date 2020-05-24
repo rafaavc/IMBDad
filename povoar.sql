@@ -134,6 +134,8 @@ INSERT INTO Episode Values(20,13,"His Last Vow"," Sherlock goes up against Charl
 INSERT INTO Episode VALUES(21,21,"The One with Joey's New Brain",NULL,TIME("00:22:00"),DATE("2001-02-15"));
 INSERT INTO Episode VALUES(22,22,"Four Movements","Gina plays a high-stakes game of chess with Capt. Holt; Rosa and Amy take Gina out for a fancy brunch; Jake and Gina must use their wits to infiltrate a posh club.",TIME("00:21:00"),DATE("2019-01-31"));
 INSERT INTO Episode VALUES(23,14,"The Final Problem","A dark secret in the Holmes family rears its head with a vengeance, putting Sherlock and friends through a series of sick, manipulative psychological and potentially fatal games.",TIME("01:29:00"),Date("2017-01-15"));
+INSERT INTO Episode Values(24,10,"test", NULL, NULL ,NULL);
+
 -- PERSON
 
 INSERT INTO Person VALUES(1, "Rafael Valente Cristino", DATE("2000-08-25"));
@@ -225,6 +227,7 @@ INSERT INTO MovieRole VALUES(35,19,3,"Baymax");
 INSERT INTO MovieRole VALUES(34,23,4,"Dr. Robotnik");
 INSERT INTO MovieRole VALUES(41, 30, 5, "James");
 INSERT INTO MovieRole VALUES(30, 30, 5, "Test");
+INSERT INTO MovieRole VALUES(3, 4, 4, "Will");
 
 INSERT INTO EpisodeRole VALUES(1, 4, 4, "Will");
 INSERT INTO EpisodeRole VALUES(2, 7, 1, NULL);
@@ -252,6 +255,7 @@ INSERT INTO EpisodeRole VALUES(18,32,3," Sherlock Holmes");
 INSERT INTO EpisodeRole VALUES(19,32,3," Sherlock Holmes");
 INSERT INTO EpisodeRole VALUES(20,32,3," Sherlock Holmes");
 INSERT INTO EpisodeRole VALUES(23,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(24,4,4,"test");
 
 -- REVIEW
 
