@@ -416,7 +416,6 @@ INSERT INTO NomineeProduction VALUES(11, 3);
 INSERT INTO NomineeProduction VALUES(12, 2);
 INSERT INTO NomineeProduction VALUES(13, 2);
 INSERT INTO NomineeProduction VALUES(14, 2);
-INSERT INTO NomineeProduction VALUES(15, 2);
 
 
 INSERT INTO NomineeCelebrity VALUES(1,2);
@@ -431,7 +430,6 @@ INSERT INTO NomineeCelebrity VALUES(11, 2);
 INSERT INTO NomineeCelebrity VALUES(12, 30);
 INSERT INTO NomineeCelebrity VALUES(13, 30);
 INSERT INTO NomineeCelebrity VALUES(14, 30);
-INSERT INTO NomineeCelebrity VALUES(15, 30);
 
 UPDATE Award SET productionId = 3, celebId = 2 WHERE id = 1;
 UPDATE Award SET productionId = 4, celebId = 6 WHERE id = 2;
@@ -447,5 +445,4 @@ UPDATE Award SET productionId = 3, celebId = 2 WHERE id = 11;
 UPDATE Award SET productionId = 2, celebId = 30 WHERE id = 12;
 UPDATE Award SET productionId = 2, celebId = 30 WHERE id = 13;
 UPDATE Award SET productionId = 2, celebId = 30 WHERE id = 14;
-UPDATE Award SET productionId = 2, celebId = 30 WHERE id = 15;
 
