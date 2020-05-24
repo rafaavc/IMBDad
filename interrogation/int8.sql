@@ -17,8 +17,8 @@ WHERE  List.id IN (
     WHERE (BL1.listId!=BL2.listId AND BL1.productionId==BL2.productionId)
 );
 
-SELECT DISTINCT Person.name, BelongsToList.productionId 
-FROM Person, BelongsToList 
+SELECT DISTINCT Person.name as PersonName, Production.name as ProductionName 
+FROM BelongsToList, Production on BelongsToList.productionId = Production.Id, Person 
 WHERE Person.id IN (
 	SELECT userId
     FROM DiferentListsWithSameProduction
