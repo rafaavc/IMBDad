@@ -15,10 +15,10 @@ WHERE ReviewProduction.productionId = 39;   -- this is the production selector
 create view Pairs as
 Select distinct R1.userId as user1Id, R2.userId as user2Id, R2.rating as rating
 FROM Review as R1, Review as R2 on (R1.rating = R2.rating and R1.userId != R2.userId)
-WHERE R1.id in reviewIds and R2.id in reviewIds;
+WHERE R1.id in reviewIds and R2.id in reviewIds and R1.userId > R2.userId;
 
 
-select Pairs.user1Id, User1.name as user1Name, Pairs.user2Id, User2.name as user2Name, Pairs.rating
+select User1.name as user1Name, User2.name as user2Name, Pairs.rating
 from
 (Person as User1  inner join Pairs on(User1.id = Pairs.user1Id))
 inner join Person as User2 on (User2.id = Pairs.user2Id);
