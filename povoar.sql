@@ -222,6 +222,7 @@ INSERT INTO MovieRole VALUES(36,18,4,"Tyler Durden");
 INSERT INTO MovieRole VALUES(35,19,3,"Baymax");
 INSERT INTO MovieRole VALUES(34,23,4,"Dr. Robotnik");
 INSERT INTO MovieRole VALUES(41, 30, 5, "James");
+INSERT INTO MovieRole VALUES(30, 30, 5, "Test");
 
 INSERT INTO EpisodeRole VALUES(1, 4, 4, "Will");
 INSERT INTO EpisodeRole VALUES(2, 7, 1, NULL);

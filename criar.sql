@@ -11,8 +11,8 @@ drop table if exists List;
 
 Drop table if EXISTS Award;
 drop table if exists NomineeProduction;
-drop table if exists NomineeCelebrity;
-
+drop table if exists NomineeCelebrity; 
+ 
 
 drop table if exists Celebrity;
 drop table if exists User;
