@@ -2,16 +2,16 @@
 .headers	on
 .nullvalue	NULL
 
--- Lista de atores e os seus papéis nume determinada produção
+--Atores que participaram em todos os episódios de uma série.
 
-Select Person.name as CelebrityName, Production.name as ProductionName, Role.name as roleName
-FROM Person, Production, Role
-WHERE (Person.id ,Production.id, Role.id) in (
-    SELECT celebId, movieId as productionId, roleId
-    FROM MovieRole
-    ) or (Person.id, Production.id, Role.id) in (
-    Select celebId, seriesId as productionId, roleId
-    FROM (Episode, Season on seasonId = Season.Id), EpisodeRole on episodeId = Episode.id
-)
-Order by (Person.name);
+drop view if exists SeasonSeriesId;
 
+create view SeasonSeriesId AS
+SELECT id FROM Season WHERE seriesId==14; -- neste caso da serie com id = 14
+
+SELECT Person.name
+FROM Person,(
+	SELECT COUNT(episodeId) AS cntCeleb, celebId
+	FROM (SELECT episodeId,celebId FROM EpisodeRole WHERE episodeId IN (SELECT id FROM Episode WHERE seasonId IN SeasonSeriesId))
+	Group By celebId)
+WHERE Person.id == celebId AND cntCeleb == (SELECT COUNT(id) FROM Episode WHERE seasonId IN SeasonSeriesId);
