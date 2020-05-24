@@ -167,6 +167,7 @@ INSERT INTO Person VALUES(28,"Chris Bale",DATE("1970-09-20"));
 INSERT INTO Person VALUES(29,"Chris Saint",DATE("1972-10-22"));
 INSERT INTO Person VALUES(30, "Peter Dinklage", DATE("1969-06-11"));
 INSERT INTO Person VALUES(31, "Susan Sarandon", DATE("1946-10-04"));
+INSERT INTO Person VALUES(32, "Benedict Cumberbatch", DATE("1976-07-19"));
 
 INSERT INTO Celebrity VALUES(2, 1.73, "I like sql");
 INSERT INTO Celebrity VALUES(3, 1.83, "Todd Phillips was born on December 20, 1970 in Brooklyn, New York City, New York, USA as Todd Bunzl. He is a producer and director, known for Joker (2019), A Tempo e Horas (2010) and Dias de Loucura (2003).");
@@ -189,6 +190,7 @@ INSERT INTO Celebrity VALUES(22,NULL,NULL);
 INSERT INTO Celebrity VALUES(23,1.88,"Jim Carrey, Canadian-born and a U.S. citizen since 2004, is an actor and producer famous for his rubbery body movements and flexible facial expressions.");
 INSERT INTO Celebrity VALUES(30,1.32, "Peter Dinklage is an American actor");
 INSERT INTO Celebrity VALUES(31,1.70, NULL);
+INSERT INTO Celebrity VALUES(32,1.83, "Benedict Timothy Carlton Cumberbatch was born and raised in London, England. His parents, Wanda Ventham and Timothy Carlton (born Timothy Carlton Congdon Cumberbatch), are both actors.");
 
 INSERT INTO User VALUES(1, "up201806680@fe.up.pt", "http://link.to.photo", "verysecret");
 INSERT INTO User VALUES(5, "up201806134@fe.up.pt", "http://link.to.photo", "password");
@@ -240,6 +242,16 @@ INSERT INTO EpisodeRole VALUES(15,21,4,"Irene Adler");
 --INSERT INTO EpisodeRole VALUES(19,21,4,"Irene Adler");
 INSERT INTO EpisodeRole VALUES(15,22,4,"Little Girl");
 INSERT INTO EpisodeRole VALUES(23,22,4,"Girl on Plane");
+INSERT INTO EpisodeRole VALUES(12,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(13,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(14,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(15,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(16,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(17,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(18,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(19,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(20,32,3," Sherlock Holmes");
+INSERT INTO EpisodeRole VALUES(23,32,3," Sherlock Holmes");
 
 -- REVIEW
 
