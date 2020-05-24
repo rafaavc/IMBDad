@@ -2,6 +2,8 @@
 .headers	on
 .nullvalue	NULL
 
+--Celebridades que ganharam dois ou mais prémios num mesmo filme ou série.
+
 SELECT (Person.name) as Celebrity
 FROM Person
 WHERE id in (

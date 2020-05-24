@@ -4,7 +4,7 @@
 
 --Quais as celebridades que participaram simultaneamente em filmes e séries?
 
-Select Person.name as Actor
+Select Person.name as celebrity
 FROM Person
 WHERE Person.id IN (
     SELECT Celebrity.personId

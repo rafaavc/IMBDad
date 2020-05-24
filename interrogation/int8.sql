@@ -4,6 +4,8 @@
 
 --Utilizadores que partilhem pelo menos 1 production nas suas listas.
 
+drop view if exists DiferentListsWithSameProduction;
+
 Create View DiferentListsWithSameProduction as 
 SELECT DISTINCT userId, productionId
 FROM List, BelongsToList as BL1

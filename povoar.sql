@@ -259,12 +259,17 @@ INSERT INTO Review VALUES(13,11,"Life's Lessons in one Movie...",NULL,10);
 INSERT INTO Review VALUES(14,11,"A powerful and enjoyable film",NULL,8);
 INSERT INTO Review VALUES(15,11,"No dialogue, No big name actors, no modern music ","No problem! Finally an animated movie that dares to be.... animated! Pixar has set a new standard in digital animation.",10);
 INSERT INTO Review VALUES(16,11,"A beautiful movie","Little Women (2019) is a wonderful movie from every aspect. It has a powerful story, superb acting and beautiful costumes and design.",8);
+
 INSERT INTO Review VALUES(17,11,"Intense, creative.... disturbing",NULL,9);
 INSERT INTO Review VALUES(18,11,NULL,NULL,9);
 INSERT INTO Review VALUES(19,11,NULL,NULL,9);
 INSERT INTO Review VALUES(20,11,"Exceptional finale", "I enjoyed it",9);
 INSERT INTO Review VALUES(21,8,NULL,NULL,8);
-INSERT INTO Review VALUES(22,1,NULL,NULL,9);
+INSERT INTO Review VALUES(22,5,NULL,NULL,9);
+
+INSERT INTO Review VALUES(23,1,"Awesome", NULL,9);
+INSERT INTO Review VALUES(24,24,"Awesome", NULL,8);
+
 
 
 INSERT INTO ReviewProduction VALUES(1, 3);
@@ -279,6 +284,8 @@ INSERT into ReviewProduction VALUES(15,38);
 INSERT into ReviewProduction VALUES(16,39);
 INSERT into ReviewProduction VALUES(21,39);
 INSERT into ReviewProduction VALUES(22,39);
+INSERT into ReviewProduction VALUES(23,39);
+INSERT into ReviewProduction VALUES(24,39);
 
 
 INSERT INTO ReviewEpisode VALUES(2, 1);
