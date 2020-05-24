@@ -8,12 +8,14 @@ No caso das séries, ter também em conta as reviews aos episódios
 */
 
 
-select cast(sum(rating) as float)/count(rating) as result from
-    (select rating, seriesId as pId from
-        (((select seriesId, Episode.id as epId from Episode inner join Season on Episode.seasonId = Season.id where seriesId = 39) as s
-            inner join ReviewEpisode on s.epId = ReviewEpisode.episodeId) 
-            as re inner join Review on re.reviewId = Review.id)
+Select cast(sum(rating) as float)/count(rating) as result 
+From(
+    Select rating, seriesId as pId 
+    From (((Select seriesId, Episode.id as epId 
+        From Episode, Season on Episode.seasonId = Season.id where seriesId = 39) as s,
+        ReviewEpisode on s.epId = ReviewEpisode.episodeId) 
+            as re, Review on re.reviewId = Review.id)
     union all
-    select rating, Production.id as pId from
-        (ReviewProduction inner join Production on Production.id = ReviewProduction.productionId) as rp
-            inner join Review on Review.id = rp.reviewId where Production.id = 39);
+    Select rating, Production.id as pId 
+    From (ReviewProduction, Production on Production.id = ReviewProduction.productionId) as rp,
+        Review on Review.id = rp.reviewId where Production.id = 39);
