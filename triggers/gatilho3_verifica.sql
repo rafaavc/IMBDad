@@ -5,7 +5,11 @@ PRAGMA foreign_keys = ON;
 .nullvalue	NULL
 
 .print 'Before:'
+.print 'NomineeCelebrity'
 select * from NomineeCelebrity;
+.print ''
+.print 'Award'
+select * from Award;
 
 INSERT INTO NomineeCelebrity Values(15, 30); --Dá erro porque produção não está nomeada
 
