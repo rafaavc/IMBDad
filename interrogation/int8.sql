@@ -2,31 +2,24 @@
 .headers	on
 .nullvalue	NULL
 
---Utilizadores que partilhem pelo menos 1 production nas suas listas.
+-- Pares de utilizadores que partilham 1 production nas suas listas.
 
-drop view if exists DiferentListsWithSameProduction;
+drop view if exists UserListProduction;
+drop view if exists Pairs;
 
-Create View DiferentListsWithSameProduction as 
-SELECT DISTINCT userId, productionId
-FROM List, BelongsToList as BL1
-WHERE  List.id IN (
-    SELECT DISTINCT BL1.listId 
-    FROM BelongsToList AS BL2 
-    WHERE (BL1.listId != BL2.listId AND BL1.productionId==BL2.productionId)
-) AND BL1.productionId in (
-    SELECT DISTINCT BL1.productionId
-    FROM BelongsToList AS BL2 
-    WHERE (BL1.listId!=BL2.listId AND BL1.productionId==BL2.productionId)
-);
+create view UserListProduction as
+select List.id as listId, userId, productionId
+from List, BelongsToList on (id = listId);
 
-SELECT DISTINCT Person.name as PersonName, Production.name as ProductionName 
-FROM BelongsToList, Production on BelongsToList.productionId = Production.Id, Person 
-WHERE Person.id IN (
-	SELECT userId
-    FROM DiferentListsWithSameProduction
-)
-AND BelongsToList.productionId IN (
-    SELECT productionId
-    FROM DiferentListsWithSameProduction
-)
-ORDER BY BelongsToList.productionId;
+
+create view Pairs as
+Select distinct ULP1.userId as user1Id, ULP2.userId as user2Id, ULP1.productionId as productionId
+FROM UserListProduction as ULP1, UserListProduction as ULP2 on (ULP1.productionId = ULP2.productionId and ULP1.userId != ULP2.userId)
+WHERE ULP1.userId > ULP2.userId;
+
+
+select User1.name as user1Name, User2.name as user2Name, Production.name
+from (Person as User1 inner join Pairs on(User1.id = Pairs.user1Id))
+    inner join Person as User2 on (User2.id = Pairs.user2Id) inner join Production on (Production.id = Pairs.productionId);
+
+

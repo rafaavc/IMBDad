@@ -1,5 +1,5 @@
 /*
-Impedir alguém que não participou numa produção de ganhar um prémio.
+Impedir alguém que não participou numa produção de ganhar/ser nomeado a um prémio.
 */
 
 .mode	    columns
@@ -26,7 +26,7 @@ Begin
     Select raise(Fail, "Production where celebrity participates must be nominated");
 End;
 
-Create Trigger WinnersMustBePartOfProduction
+Create Trigger WinnersMustBePartOfProduction  -- winners are inserted on update, because by insert it would give error (no nominees)
 Before update on Award
 when (New.celebId not in (
     Select celebId

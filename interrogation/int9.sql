@@ -2,6 +2,8 @@
 .headers	on
 .nullvalue	NULL
 
+-- Lista de atores e os seus papéis nume determinada produção
+
 Select Person.name as CelebrityName, Production.name as ProductionName, Role.name as roleName
 FROM Person, Production, Role
 WHERE (Person.id ,Production.id, Role.id) in (
