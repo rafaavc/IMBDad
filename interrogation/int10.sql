@@ -20,4 +20,4 @@ from (
     )
 )
 group by celebId
-having differentRoleCOunt >= 3;
+having differentRoleCount >= 3;
